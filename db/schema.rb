@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228030222) do
+ActiveRecord::Schema.define(version: 20170228041524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "status"
+    t.boolean  "featured"
+    t.string   "slug"
+    t.text     "excerpt"
+    t.datetime "publish_date"
+    t.index ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
+  end
 
 end

@@ -1,0 +1,46 @@
+// @import require_tree .
+// @import require_self
+@import "variables";
+@import "bootstrap";
+
+html {
+  font-size: 14px;
+  @include media-breakpoint-up(md) {
+    font-size: 16px;
+  }
+  @include media-breakpoint-up(xl) {
+    font-size: 18px;
+  }
+}
+
+body {
+  // font-weight: 300;
+  padding-top: 100px;
+}
+
+// .jumbotron {
+//   min-height: 500px;
+// }
+
+// .cover {
+//   background-position: center center;
+//   background-size: cover;
+// }
+
+
+// .form-control {
+//   transition: .25s all;
+// }
+
+
+
+// p {
+//   font-family: $font-family-serif;
+// }
+
+// .shadow-lg {
+//   box-shadow: 0 10px 20px rgba(black, .05);
+//   &:focus {
+//     box-shadow: 0 10px 40px rgba(black, .2);
+//   }
+// }
