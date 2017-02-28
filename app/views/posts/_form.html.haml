@@ -1,0 +1,17 @@
+= simple_form_for(@post) do |f|
+  = f.error_notification
+  .row
+    .col-md-9
+      = f.input :title
+      website url:
+      = f.input :slug
+      = link_to 'go to page', '#', class: 'btn btn-secondary'
+
+      = f.input :body
+    .col-md-3
+      = f.input :status
+      = f.input :featured
+      = f.input :excerpt
+      = f.input :publish_date
+
+      = f.button :submit, class: 'btn-primary'

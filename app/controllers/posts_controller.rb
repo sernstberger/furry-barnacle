@@ -6,6 +6,9 @@ class PostsController < ApplicationController
   end
 
   def show
+    if request.path != post_path(@post)
+      redirect_to @post, status: :moved_permanently
+    end
   end
 
   def new
@@ -51,7 +54,7 @@ class PostsController < ApplicationController
 
   private
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
     end
 
     def post_params
