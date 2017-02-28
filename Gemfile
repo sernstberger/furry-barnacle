@@ -29,9 +29,11 @@ gem 'friendly_id'
 gem 'haml'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'simple_form'
-# gem 'ransack'
+gem 'ransack'
 # gem 'cloudinary'
 # gem 'devise'
+gem 'rollbar'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
