@@ -1,0 +1,7 @@
+= link_to 'Back', destinations_path
+
+.container
+  %h1= @destination.name
+  %p= @destination.about
+
+  = link_to 'Edit', edit_destination_path(@destination)
