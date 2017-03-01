@@ -14,7 +14,7 @@
                   - if destination.excerpt.present?
                     = destination.excerpt
                   - else
-                    = destination.body.truncate(100)
+                    = destination.about.truncate(100)
                   = link_to 'Read more', destination, class: 'btn btn-secondary'
       - else
         Add some destinations!

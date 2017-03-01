@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228232832) do
+ActiveRecord::Schema.define(version: 20170301003232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attractions", force: :cascade do |t|
+    t.string  "name"
+    t.integer "destination_id"
+    t.text    "about"
+    t.string  "slug"
+    t.text    "excerpt"
+    t.string  "website"
+    t.index ["destination_id"], name: "index_attractions_on_destination_id", using: :btree
+    t.index ["slug"], name: "index_attractions_on_slug", unique: true, using: :btree
+  end
 
   create_table "destinations", force: :cascade do |t|
     t.string "name"
@@ -48,4 +59,5 @@ ActiveRecord::Schema.define(version: 20170228232832) do
     t.index ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
   end
 
+  add_foreign_key "attractions", "destinations"
 end

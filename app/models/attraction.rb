@@ -1,6 +1,6 @@
-class Destination < ApplicationRecord
+class Attraction < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
-  has_many :attractions
+  belongs_to :destination
 end
