@@ -24,12 +24,12 @@
       = link_to 'Furry Barnacle', root_path, class: 'navbar-brand'
       #navbarSupportedContent.collapse.navbar-collapse
         %ul.navbar-nav.mr-auto
-          %li.nav-item.active
-            = link_to 'Blog', posts_path, class: 'nav-link'
           %li.nav-item
             = link_to 'Destinations', destinations_path, class: 'nav-link'
-          %li.nav-item
-            = link_to 'Attractions', attractions_path, class: 'nav-link'
+          %li.nav-item.active
+            = link_to 'Blog', posts_path, class: 'nav-link'
+          -# %li.nav-item
+          -#   = link_to 'Attractions', attractions_path, class: 'nav-link'
           -# %li.nav-item
           -#   = link_to 'Admin', admin_root_path, class: 'nav-link'
 
