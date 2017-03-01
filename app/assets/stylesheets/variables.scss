@@ -94,7 +94,7 @@
 // Start with assigning color names to specific hex values.
 $white:  #fff !default;
 $black:  #000 !default;
-$red:    #d9534f !default;
+$red:    #fe5339 !default;
 $orange: #f0ad4e !default;
 $yellow: #ffd500 !default;
 $green:  #5cb85c !default;
@@ -244,8 +244,10 @@ $grid-gutter-widths: (
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,700,700i|Montserrat:300,300i,500,500i,900,900i');
+
+$font-family-sans-serif: 'Montserrat', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:      'Crimson Text', Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
 
@@ -254,8 +256,8 @@ $font-size-lg:   1.25rem !default;
 $font-size-sm:   .875rem !default;
 $font-size-xs:   .75rem !default;
 
-$font-weight-normal: normal !default;
-$font-weight-bold: bold !default;
+$font-weight-normal: 300 !default;
+$font-weight-bold: 900 !default;
 
 $font-weight-base: $font-weight-normal !default;
 $line-height-base: 1.5 !default;

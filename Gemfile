@@ -31,7 +31,8 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'simple_form'
 gem 'ransack'
 # gem 'cloudinary'
-# gem 'devise'
+gem 'devise'
+gem 'rack-mini-profiler'
 gem 'rollbar'
 
 
