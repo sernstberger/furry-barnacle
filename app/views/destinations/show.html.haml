@@ -4,4 +4,9 @@
   %h1= @destination.name
   %p= @destination.about
 
+  - @attractions.each do |attraction|
+    %li
+      = link_to attraction_path(attraction) do
+        = attraction.name
+
   = link_to 'Edit', edit_destination_path(@destination)

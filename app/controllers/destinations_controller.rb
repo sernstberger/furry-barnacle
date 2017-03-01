@@ -9,6 +9,8 @@ class DestinationsController < ApplicationController
     if request.path != destination_path(@destination)
       redirect_to @destination, status: :moved_permanently
     end
+
+    @attractions = Attraction.where(destination_id: @destination.id)
   end
 
   def new
