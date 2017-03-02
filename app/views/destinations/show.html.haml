@@ -7,7 +7,8 @@
   .row
     .col-sm-8
       %h1= @destination.name
-      %p= @destination.about.html_safe
+      .font-serif
+        = @destination.about.html_safe
 
     .col-sm-4
       .card
