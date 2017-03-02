@@ -181,7 +181,7 @@ $sizes: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:       $white !default;
+$body-bg:       $gray-lightest !default;
 $body-color:    $gray-dark !default;
 $inverse-bg:    $gray-dark !default;
 $inverse-color: $gray-lighter !default;
@@ -264,10 +264,10 @@ $line-height-base: 1.5 !default;
 
 $font-size-h1: 2.5rem !default;
 $font-size-h2: 2rem !default;
-$font-size-h3: 1.75rem !default;
-$font-size-h4: 1.5rem !default;
-$font-size-h5: 1.25rem !default;
-$font-size-h6: 1rem !default;
+$font-size-h3: 1.5rem !default;
+$font-size-h4: 1.2rem !default;
+$font-size-h5: 1rem !default;
+$font-size-h6: 0.8rem !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family:   inherit !default;
@@ -778,7 +778,7 @@ $badge-danger-bg:             $brand-danger !default;
 $badge-color:                 $white !default;
 $badge-link-hover-color:      $white !default;
 $badge-font-size:             75% !default;
-$badge-font-weight:           $font-weight-bold !default;
+$badge-font-weight:           $font-weight-normal !default;
 $badge-padding-x:             .4em !default;
 $badge-padding-y:             .25em !default;
 

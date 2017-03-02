@@ -1,12 +1,22 @@
-= link_to 'Back', destinations_path
+-# = link_to 'Back', destinations_path
+
+.blah
+  = image_tag 'grand-canyon.jpg', class: 'img-fluid'
 
 .container
-  %h1= @destination.name
-  %p= @destination.about
+  .row
+    .col-sm-8
+      %h1= @destination.name
+      %p= @destination.about.html_safe
 
-  - @attractions.each do |attraction|
-    %li
-      = link_to attraction_path(attraction) do
-        = attraction.name
+    .col-sm-4
+      .card
+        %h5.card-header Top 10 places in Austin
+        .list-group.list-group-flush
+          - @attractions.each do |attraction|
+            = link_to attraction_path(attraction), class: 'list-group-item' do
+              = attraction.name
+        .card-footer
+          = link_to 'show all', '#'
 
   = link_to 'Edit', edit_destination_path(@destination)

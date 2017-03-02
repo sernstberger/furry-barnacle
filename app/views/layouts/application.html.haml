@@ -17,7 +17,6 @@
     - if alert
       %p.alert= alert
 
-
     %nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.fixed-top
       %button.navbar-toggler.navbar-toggler-right{"data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
@@ -25,9 +24,9 @@
       #navbarSupportedContent.collapse.navbar-collapse
         %ul.navbar-nav.mr-auto
           %li.nav-item
-            = link_to 'Destinations', destinations_path, class: 'nav-link'
-          %li.nav-item.active
-            = link_to 'Blog', posts_path, class: 'nav-link'
+            = active_link_to 'Destinations', destinations_path, class: 'nav-link'
+          %li.nav-item
+            = active_link_to 'Blog', posts_path, class: 'nav-link'
           -# %li.nav-item
           -#   = link_to 'Attractions', attractions_path, class: 'nav-link'
           -# %li.nav-item
@@ -43,6 +42,4 @@
             %li.nav-item
               = link_to 'Register', new_user_registration_path, class: 'nav-link'
 
-
-    .container-fluid
-      = yield
+    = yield

@@ -34,6 +34,8 @@ gem 'ransack'
 gem 'devise'
 gem 'rack-mini-profiler'
 gem 'rollbar'
+gem 'active_link_to'
+gem 'trix'
 
 
 group :development, :test do

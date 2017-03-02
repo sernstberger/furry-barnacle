@@ -2,20 +2,31 @@
 // @import require_self
 @import "variables";
 @import "bootstrap";
+@import "trix";
 
 html {
   font-size: 14px;
   @include media-breakpoint-up(md) {
     font-size: 16px;
   }
-  @include media-breakpoint-up(xl) {
+  @include media-breakpoint-up(lg) {
     font-size: 18px;
+  }
+  @include media-breakpoint-up(xl) {
+    font-size: 20px;
   }
 }
 
 body {
   // font-weight: 300;
-  padding-top: 100px;
+  padding-top: 70px;
+}
+
+.font-serif {
+  font-family: $font-family-serif;
+  @include media-breakpoint-down(md) {
+    font-size: 1.2rem;
+  }
 }
 
 // .jumbotron {
