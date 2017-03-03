@@ -5,7 +5,8 @@
         - if @photos.present?
           - @photos.each do |photo|
             .col-sm-12
-              = image_tag photo.image, class: 'img-fluid'
+              = link_to photo_path(photo) do
+                = image_tag photo.image.large, class: 'img-fluid'
 
         - else
           Add some photos!

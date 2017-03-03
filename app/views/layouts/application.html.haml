@@ -33,7 +33,7 @@
           -#   = link_to 'Attractions', attractions_path, class: 'nav-link'
           -# %li.nav-item
           -#   = link_to 'Admin', admin_root_path, class: 'nav-link'
-
+        %ul.navbar-nav
           - if user_signed_in?
             %li.nav-item
               = link_to'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
