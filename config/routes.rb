@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :destinations
   resources :attractions
+  resources :photos
   # devise_for :users
 
   # scope :admin do

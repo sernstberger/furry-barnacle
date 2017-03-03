@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-xl-10.offset-xl-1
+      .row
+        - if @photos.present?
+          - @photos.each do |photo|
+            .col-sm-12
+              = image_tag photo.image, class: 'img-fluid'
+
+        - else
+          Add some photos!
+
+%br
+%br
+%br
+%br
+= link_to 'New Post', new_photo_path

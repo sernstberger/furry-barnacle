@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301033853) do
+ActiveRecord::Schema.define(version: 20170303011404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer "photo_id"
+    t.integer "post_id"
+    t.integer "destination_id"
+    t.integer "attraction_id"
+    t.index ["attraction_id"], name: "index_attachments_on_attraction_id", using: :btree
+    t.index ["destination_id"], name: "index_attachments_on_destination_id", using: :btree
+    t.index ["photo_id"], name: "index_attachments_on_photo_id", using: :btree
+    t.index ["post_id"], name: "index_attachments_on_post_id", using: :btree
+  end
 
   create_table "attractions", force: :cascade do |t|
     t.string  "name"
@@ -48,6 +59,12 @@ ActiveRecord::Schema.define(version: 20170301033853) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "image"
+    t.string "name"
+    t.text   "description"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -76,5 +93,9 @@ ActiveRecord::Schema.define(version: 20170301033853) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "attachments", "attractions"
+  add_foreign_key "attachments", "destinations"
+  add_foreign_key "attachments", "photos"
+  add_foreign_key "attachments", "posts"
   add_foreign_key "attractions", "destinations"
 end
