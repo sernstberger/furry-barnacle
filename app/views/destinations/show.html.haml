@@ -1,7 +1,7 @@
 -# = link_to 'Back', destinations_path
 
 .blah
-  = image_tag 'grand-canyon.jpg', class: 'img-fluid'
+  = image_tag @destination.photos.first.image.jumbo, class: 'img-fluid'
 
 .container
   .row
@@ -12,7 +12,7 @@
 
     .col-sm-4
       .card
-        %h5.card-header Top 10 places in Austin
+        %h5.card-header Things to do
         .list-group.list-group-flush
           - @attractions.each do |attraction|
             = link_to attraction_path(attraction), class: 'list-group-item' do
