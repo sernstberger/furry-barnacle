@@ -1,0 +1,16 @@
+.col-sm-12
+  .card
+    .row
+      .col-sm-2
+        = link_to post do
+          = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
+      .col-sm-10.card-block
+        %h3= link_to post.title, post
+        %p= post.publish_date
+        - if post.excerpt.present?
+          .font-serif
+            = post.excerpt
+        - else
+          .font-serif
+            = post.body.truncate(100)
+        = link_to 'Read more', post, class: 'btn btn-secondary'

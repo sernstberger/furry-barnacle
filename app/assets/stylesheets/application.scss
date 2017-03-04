@@ -26,8 +26,15 @@ b, strong {
   font-weight: $font-weight-bold;
 }
 
+.position-relative {
+  position: relative;
+}
+
 .font-serif {
   font-family: $font-family-serif;
+}
+
+.longform {
   font-size: 1.2rem;
 }
 

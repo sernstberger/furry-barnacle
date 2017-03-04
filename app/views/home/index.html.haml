@@ -1,0 +1,32 @@
+.container
+  %h1
+    %span.text-primary Furry Barnacle
+    helps you find the places to visit as you plan your trip.
+
+  = simple_form_for :thing do |f|
+    = f.input :boo, placeholder: 'Where are you going?'
+    = f.submit 'Search', class: 'btn btn-primary'
+
+
+
+
+.container-fluid
+  - if @destinations.present?
+    %h2 Top Destinations
+    .row
+      - @destinations.each do |destination|
+        = render partial: 'components/destination_card', locals: {destination: destination}
+    .row
+      .col
+        = link_to 'See all destinations', '#', class: 'btn btn-primary'
+
+  %hr
+
+  - if @posts.present?
+    %h2 Recent Posts
+    .row
+      - @posts.each do |post|
+        = render partial: 'components/post_card', locals: {post: post}
+    .row
+      .col
+        = link_to 'See all posts', '#', class: 'btn btn-primary'

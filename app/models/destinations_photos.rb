@@ -1,0 +1,2 @@
+class DestinationsPhotos < ApplicationRecord
+end
