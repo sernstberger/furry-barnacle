@@ -6,7 +6,7 @@
           - @planners.each do |planner|
             .col-sm-12
               = link_to planner_path(planner) do
-                = image_tag planner.image.large, class: 'img-fluid'
+                %li= planner.name
 
         - else
           Add some planners!

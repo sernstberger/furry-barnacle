@@ -35,6 +35,13 @@
         = @destination.about.html_safe
 
     .col-sm-4
+      // Make sure to take out data-ad-test for prod!
+      -# %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+      -#   / Testing
+      -#   %ins.adsbygoogle{"data-ad-test" => "on", "data-ad-client" => "ca-pub-1968386566745891", "data-ad-format" => "auto", "data-ad-slot" => "6955528863", :style => "display:block"}
+      -#   :javascript
+      -#     (adsbygoogle = window.adsbygoogle || []).push({});
+
       .card
         %h5.card-header Things to do
         .list-group.list-group-flush

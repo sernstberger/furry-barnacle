@@ -1,8 +1,9 @@
-= link_to 'Back', photos_path
+= link_to 'Back', planners_path
 
 
 .container
-  = image_tag @photo.image.jumbo, alt: @photo.name
-  = @photo.description
+  %h1= @planner.name
+  %p= @planner.start_date
+  %p= @planner.end_date
 
-  = link_to 'Edit', edit_photo_path(@photo)
+  = link_to 'Edit', edit_planner_path(@planner)

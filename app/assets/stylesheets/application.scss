@@ -19,7 +19,7 @@ html {
 
 body {
   // font-weight: 300;
-  padding-top: 70px;
+  padding-top: 63px;
 }
 
 b, strong {
@@ -36,6 +36,16 @@ b, strong {
 
 .longform {
   font-size: 1.2rem;
+}
+
+.card-img-overlay {
+  @include gradient-y(transparent, rgba($black, .7), 50%, 100%);
+}
+
+.card-title {
+  a {
+    color: $black;
+  }
 }
 
 // .jumbotron {
