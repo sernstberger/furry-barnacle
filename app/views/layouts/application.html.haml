@@ -1,10 +1,10 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport"}/
     // TODO make this the excerpt if there is one
-    %meta{:content => "Awesome Description Here", :name => "description"}/
+    %meta{content: "Awesome Description Here", name: "description"}/
 
     // TODO add page title to this
     %title Furry Barnacle
@@ -14,7 +14,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     - if notice
-      %p.notice= notice
+      .alert.alert-success.alert-dismissible.fade.show{:role => "alert"}
+        %button.close{'aria-label' => 'Close', 'data-dismiss' => 'alert', type: 'button'}
+          %span{'aria-hidden' => 'true'} &times;
+        = notice
+
     - if alert
       %p.alert= alert
 

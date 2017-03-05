@@ -16,7 +16,7 @@ class Admin::DestinationsController < Admin::BaseController
     @destination = Destination.new(destination_params)
 
     if @destination.save
-      redirect_to @destination, notice: 'Destination was successfully created.'
+      redirect_to edit_admin_destination_path(@destination.id), notice: 'Destination was successfully created.'
     else
       render :new
     end
@@ -24,7 +24,7 @@ class Admin::DestinationsController < Admin::BaseController
 
   def update
     if @destination.update(destination_params)
-      redirect_to @destination, notice: 'Destination was successfully updated.'
+      redirect_to edit_admin_destination_path(@destination.id), notice: 'Destination was successfully updated.'
     else
       render :edit
     end
@@ -33,12 +33,12 @@ class Admin::DestinationsController < Admin::BaseController
   def destroy
     @destination.destroy
 
-    redirect_to destinations_url, notice: 'Destination was successfully destroyed.'
+    redirect_to admin_destinations_path, notice: 'Destination was successfully destroyed.'
   end
 
   private
     def set_destination
-      @destination = Destination.find(params[:id])
+      @destination = Destination.friendly.find(params[:id])
     end
 
     def destination_params
