@@ -1,0 +1,7 @@
+= link_to 'Back', destinations_path
+.container
+  %h1 Editing Destination
+  = render 'form', destination: @destination
+  = link_to 'Show', @destination
+  %br/
+  = link_to 'Destroy', @destination, method: :delete, data: { confirm: 'Are you sure?' }

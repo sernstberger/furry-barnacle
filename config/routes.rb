@@ -1,16 +1,24 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: "home#index"
+  root to: 'home#index'
 
   resources :home, only: [:index]
-  resources :posts
-  resources :destinations
-  resources :attractions
-  resources :photos
-  resources :planners
+  resources :posts, only: [:index, :show]
+  resources :destinations, only: [:index, :show]
+  resources :attractions, only: [:index, :show]
+  resources :photos, only: [:index, :show]
+  resources :planners, only: [:index, :show]
 
-  # devise_for :users
+  namespace :admin do
+    root 'dashboard#index'
+    resources :dashboard, only: [:index]
+    resources :posts, except: [:show]
+    resources :destinations, except: [:show]
+    resources :attractions, except: [:show]
+    resources :photos, except: [:show]
+    resources :planners, except: [:show]
+  end
 
   # scope :admin do
   #   root controller: :base, to: "admin#index"

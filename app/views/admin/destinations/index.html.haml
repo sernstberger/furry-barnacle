@@ -1,0 +1,49 @@
+= link_to 'New Destination', new_admin_destination_path, class: 'btn btn-primary'
+
+%h2 search bar
+
+%table.table
+  %thead
+    %tr
+      %th
+      %th Name
+      %th something
+  %tbody
+    - if @destinations.present?
+      - @destinations.each do |destination|
+        %tr
+          %td= image_tag destination.photos.first.image.thumb if destination.photos.present?
+          %td= destination.name
+          %td= link_to 'Edit', edit_admin_destination_path(destination.id)
+
+
+
+
+-# .container-fluid
+-#   .row
+-#     .col-xl-10.offset-xl-1
+-#       order
+-#       most popular
+-#       alphabetic
+-#       .row
+-#         - if @destinations.present?
+-#           - @destinations.each_with_index do |destination, index|
+-#             - if index < 1
+-#               .col-sm-12
+-#                 .card
+-#                   .card-block
+-#                     = image_tag destination.photos.first.image.large
+-#                     .card-img-overlay
+-#                       %h2.card-title= destination.name
+-#                       %h4.card-text= destination.excerpt
+
+-#             - else
+-#               = render partial: 'components/destination_card', locals: {destination: destination}
+
+-#   = link_to 'more', '#', class: 'btn btn-primary'
+
+-#   %br
+-#   %br
+-#   %br
+-#   %br
+-#

@@ -1,0 +1,68 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    // TODO make this the excerpt if there is one
+    %meta{:content => "Awesome Description Here", :name => "description"}/
+
+    // TODO add page title to this
+    %title Furry Barnacle
+    = csrf_meta_tags
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :integrity => "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", :rel => "stylesheet"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    - if notice
+      %p.notice= notice
+    - if alert
+      %p.alert= alert
+
+    .row
+      .col-sm-4.col-md-3.col-lg-2.bg-inverse
+        = link_to 'Furry Barnacle', root_path
+        %ul
+          %li.nav-item
+            = active_link_to 'Destinations', admin_destinations_path, class: 'nav-link'
+          %li.nav-item
+            = active_link_to 'Blog', admin_posts_path, class: 'nav-link'
+          %li.nav-item
+            = active_link_to 'Photos', admin_photos_path, class: 'nav-link'
+          %li.nav-item
+            = active_link_to 'Planners', admin_planners_path, class: 'nav-link'
+          %li.nav-item
+            = active_link_to 'Attractions', admin_attractions_path, class: 'nav-link'
+          -# %li.nav-item
+          -#   = link_to 'Admin', admin_root_path, class: 'nav-link'
+
+      .col-sm-8.col-md-9.col-lg-10
+        = yield
+
+    -# %nav.navbar.navbar-toggleable-md.navbar-light.bg-inverse
+    -#   %button.navbar-toggler.navbar-toggler-right{"data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    -#     %span.navbar-toggler-icon
+    -#   = link_to 'Furry Barnacle', root_path, class: 'navbar-brand'
+    -#   #navbarSupportedContent.collapse.navbar-collapse
+    -#     %ul.navbar-nav.mr-auto
+    -#       %li.nav-item
+    -#         = active_link_to 'Destinations', destinations_path, class: 'nav-link'
+    -#       %li.nav-item
+    -#         = active_link_to 'Blog', posts_path, class: 'nav-link'
+    -#       %li.nav-item
+    -#         = active_link_to 'Photos', photos_path, class: 'nav-link'
+    -#       %li.nav-item
+    -#         = active_link_to 'Planner', planners_path, class: 'nav-link'
+    -#       -# %li.nav-item
+    -#       -#   = link_to 'Attractions', attractions_path, class: 'nav-link'
+    -#       %li.nav-item
+    -#         = link_to 'Admin', admin_root_path, class: 'nav-link'
+    -#     %ul.navbar-nav
+    -#       - if user_signed_in?
+    -#         %li.nav-item
+    -#           = link_to'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
+    -#       - else
+    -#         %li.nav-item
+    -#           = link_to 'Login', new_user_session_path, class: 'nav-link'
+
+    -#         %li.nav-item
+    -#           = link_to 'Register', new_user_registration_path, class: 'nav-link'

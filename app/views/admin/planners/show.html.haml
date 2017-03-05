@@ -1,0 +1,9 @@
+= link_to 'Back', planners_path
+
+
+.container
+  %h1= @planner.name
+  %p= @planner.start_date
+  %p= @planner.end_date
+
+  = link_to 'Edit', edit_planner_path(@planner)

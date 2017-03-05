@@ -1,0 +1,24 @@
+= simple_form_for(@attraction) do |f|
+  = f.error_notification
+  .row
+    .col-md-9
+      = f.input :name
+      website url:
+      = f.input :slug
+      = link_to 'go to page', '#', class: 'btn btn-secondary'
+
+      = f.input :about
+
+      = f.association :destination
+
+      %hr
+
+      = f.input :excerpt
+
+
+    .col-md-3
+      -# = f.input :status
+      -# = f.input :featured
+      -# = f.input :publish_date
+
+      = f.button :submit, class: 'btn-primary'

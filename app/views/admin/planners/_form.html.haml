@@ -1,0 +1,17 @@
+.container
+  = simple_form_for(@planner) do |f|
+    = f.error_notification
+    .row
+      .col-sm-12
+        = f.input :name
+        = f.input :start_date
+        = f.input :end_date
+        = f.input :user_id
+
+
+        .card
+          .card-block
+            img
+            akjladfl
+
+        = f.button :submit, class: 'btn-primary'
