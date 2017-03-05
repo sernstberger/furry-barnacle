@@ -16,3 +16,9 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require trix
+
+
+$(document).on('turbolinks:load', function() {
+  $("#carouselExampleSlidesOnly .carousel-indicators li:first").addClass("active");
+  $("#carouselExampleSlidesOnly .carousel-inner .carousel-item:first").addClass("active");
+});

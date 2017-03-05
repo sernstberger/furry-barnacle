@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170304203822) do
+ActiveRecord::Schema.define(version: 20170305032258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,24 @@ ActiveRecord::Schema.define(version: 20170304203822) do
     t.text   "description"
   end
 
+  create_table "planners", force: :cascade do |t|
+    t.string  "name"
+    t.date    "start_date"
+    t.date    "end_date"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_planners_on_user_id", using: :btree
+  end
+
+  create_table "planners_destinations", force: :cascade do |t|
+    t.integer "planner_id"
+    t.integer "destinations_id"
+    t.date    "date"
+    t.time    "start_time"
+    t.time    "end_time"
+    t.index ["destinations_id"], name: "index_planners_destinations_on_destinations_id", using: :btree
+    t.index ["planner_id"], name: "index_planners_destinations_on_planner_id", using: :btree
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -92,4 +110,7 @@ ActiveRecord::Schema.define(version: 20170304203822) do
   add_foreign_key "attractions", "destinations"
   add_foreign_key "destinations_photos", "destinations"
   add_foreign_key "destinations_photos", "photos"
+  add_foreign_key "planners", "users"
+  add_foreign_key "planners_destinations", "destinations", column: "destinations_id"
+  add_foreign_key "planners_destinations", "planners"
 end

@@ -1,7 +1,31 @@
 -# = link_to 'Back', destinations_path
 
 .blah
-  = image_tag @destination.photos.first.image.jumbo, class: 'img-fluid'
+  - if @destination.photos.count > 1
+    #carouselExampleSlidesOnly.carousel.slide{"data-ride" => "carousel"}
+      %ol.carousel-indicators
+        - @destination.photos.each_with_index do |dp, index|
+          %li{"data-slide-to" => index, "data-target" => "#carouselExampleSlidesOnly"}
+
+      .carousel-inner{:role => "listbox"}
+        - @destination.photos.each do |dp|
+          .carousel-item
+            = image_tag dp.image.jumbo, class: 'img-fluid'
+            .carousel-caption.d-none.d-md-block
+              %h3= dp.name
+              %p= dp.description
+
+      %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleSlidesOnly", :role => "button"}
+        %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+        %span.sr-only Previous
+      %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleSlidesOnly", :role => "button"}
+        %span.carousel-control-next-icon{"aria-hidden" => "true"}
+        %span.sr-only Next
+
+
+
+  - elsif @destination.photos.count == 1
+    = image_tag @destination.photos.first.image.jumbo, class: 'img-fluid'
 
 .container
   .row

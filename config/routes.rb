@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :destinations
   resources :attractions
   resources :photos
+  resources :planners
+
   # devise_for :users
 
   # scope :admin do

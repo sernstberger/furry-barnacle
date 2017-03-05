@@ -6,7 +6,7 @@
           = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
       .col-sm-10.card-block
         %h3= link_to post.title, post
-        %p= post.publish_date
+        %p= formatted_date post.publish_date
         - if post.excerpt.present?
           .font-serif
             = post.excerpt
