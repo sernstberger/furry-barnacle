@@ -14,8 +14,12 @@
     - if @destinations.present?
       - @destinations.each do |destination|
         %tr
-          %td= image_tag destination.photos.first.image.thumb if destination.photos.present?
-          %td= destination.name
+          %td
+            = link_to edit_admin_destination_path(destination.id) do
+              = image_tag destination.photos.first.image.thumb if destination.photos.present?
+          %td
+            = link_to edit_admin_destination_path(destination.id) do
+              = destination.name
           %td= link_to 'Edit', edit_admin_destination_path(destination.id)
 
 
