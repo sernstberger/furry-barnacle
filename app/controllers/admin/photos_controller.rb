@@ -31,14 +31,10 @@ class Admin::PhotosController < Admin::BaseController
   end
 
   def update
-    respond_to do |format|
-      if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @photo }
-      else
-        format.html { render :edit }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    if @photo.update(photo_params)
+      redirect_to edit_admin_photo_path(@photo.id), notice: 'Photo was successfully updated.'
+    else
+      render :edit
     end
   end
 

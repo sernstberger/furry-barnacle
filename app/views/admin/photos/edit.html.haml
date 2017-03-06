@@ -1,7 +1,6 @@
-= link_to 'Back', photos_path
-.container
-  %h1 Editing Post
-  = render 'form', photo: @photo
-  = link_to 'Show', @photo
-  %br/
-  = link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'Back', admin_photos_path
+
+%h1 Editing Photo
+= render 'form', photo: @photo
+%br/
+= link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?' }

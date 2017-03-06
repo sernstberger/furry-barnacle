@@ -1,9 +1,13 @@
-.container
-  = simple_form_for(@photo) do |f|
-    = f.error_notification
-    .row
-      .col-s-12
-        = f.file_field :image
-        = f.input :name
-        = f.input :description
-        = f.button :submit, class: 'btn-primary'
+= simple_form_for [:admin, @photo] do |f|
+  = f.error_notification
+  .row
+    .col-s-12
+      - if @photo.image.present?
+        .foo
+          = image_tag @photo.image.large
+        -# = link_to 'go away', '#', class: 'btn btn-primary', id: 'goaway', remote: true
+
+      = render partial: 'photo_uploader', locals: {f: f}
+      = f.input :name
+      = f.input :description
+      = f.button :submit, class: 'btn-primary'

@@ -1,22 +1,32 @@
 = simple_form_for [:admin, destination] do |f|
   = f.error_notification
   .row
-    .col-md-9
-      = f.input :name
-      website url:
-      = f.input :slug
-      = link_to 'go to page', '#', class: 'btn btn-secondary'
+    .col-sm-12
+      = f.input :name, label: false, input_html: {class: 'form-control-lg'}
 
-      = f.input :city
-      = f.input :state
-      = f.trix_editor :about
+
+      %h6
+        = request.base_url + '/destination/'
+        %span.d-inline-block= f.input :slug, label: false, input_html: {class: 'form-control-sm'}, wrapper_html: {class: 'mb-0'}
+        = link_to 'go', @destination, class: 'btn btn-secondary btn-sm'
+
+      %hr
+
+      .row
+        .col-sm-8
+          = f.input :city
+        .col-sm-4
+          = f.input :state
+
+      %hr
+
+      = f.trix_editor :about, class: 'form-control'
 
       %hr
 
       = f.input :excerpt
 
 
-    .col-md-3
       -# = f.input :status
       -# = f.input :featured
       -# = f.input :publish_date

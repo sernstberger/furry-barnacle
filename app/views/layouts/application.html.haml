@@ -13,14 +13,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - if notice
-      .alert.alert-success.alert-dismissible.fade.show{:role => "alert"}
-        %button.close{'aria-label' => 'Close', 'data-dismiss' => 'alert', type: 'button'}
-          %span{'aria-hidden' => 'true'} &times;
-        = notice
-
-    - if alert
-      %p.alert= alert
+    = render 'components/flash_messages'
 
     %nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.fixed-top
       %button.navbar-toggler.navbar-toggler-right{"data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
@@ -33,13 +26,9 @@
           %li.nav-item
             = active_link_to 'Blog', posts_path, class: 'nav-link'
           %li.nav-item
-            = active_link_to 'Photos', photos_path, class: 'nav-link'
-          %li.nav-item
             = active_link_to 'Planner', planners_path, class: 'nav-link'
-          -# %li.nav-item
-          -#   = link_to 'Attractions', attractions_path, class: 'nav-link'
-          -# %li.nav-item
-          -#   = link_to 'Admin', admin_root_path, class: 'nav-link'
+          %li.nav-item
+            = link_to 'Admin', admin_root_path, class: 'nav-link'
         %ul.navbar-nav
           - if user_signed_in?
             %li.nav-item

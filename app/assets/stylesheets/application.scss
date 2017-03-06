@@ -1,6 +1,6 @@
 // @import require_tree .
 // @import require_self
-@import "variables";
+@import "custom";
 @import "bootstrap";
 @import "trix";
 
@@ -19,7 +19,7 @@ html {
 
 body {
   // font-weight: 300;
-  padding-top: 63px;
+  padding-top: 3.5rem;
 }
 
 b, strong {
@@ -47,6 +47,8 @@ b, strong {
     color: $black;
   }
 }
+
+
 
 // .jumbotron {
 //   min-height: 500px;
