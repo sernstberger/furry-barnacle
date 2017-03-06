@@ -2,7 +2,7 @@ class DestinationsController < ApplicationController
   before_action :set_destination, only: [:show, :edit, :update, :destroy]
 
   def index
-    @destinations = Destination.all
+    @destinations = Destination.order('name ASC')
   end
 
   def show
