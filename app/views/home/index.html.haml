@@ -15,8 +15,10 @@
   - if @destinations.present?
     %h2 Top Destinations
     .row
-      - @destinations.each do |destination|
-        = render partial: 'components/destination_card', locals: {destination: destination}
+      .col-xxl-8.offset-xxl-2
+        .row
+          - @destinations.each do |destination|
+            = render partial: 'components/destination_card', locals: {destination: destination}
     .row.mt-3.text-center
       .col
         = link_to 'See all destinations', destinations_path, class: 'btn btn-primary'
