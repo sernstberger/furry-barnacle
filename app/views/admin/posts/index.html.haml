@@ -1,31 +1,64 @@
-.row
-  .col-xl-10.offset-xl-1
-    .row
-      - if @posts.present?
-        - @posts.each_with_index do |post, index|
-          - if index < 2
-            .col-lg-6
-              .card
-                .row
-                  .col-sm-6
-                    = link_to post do
-                      = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
-                  .col-sm-6.card-block
-                    %h3= link_to post.title, post
-                    %p= post.publish_date
-                    - if post.excerpt.present?
-                      = post.excerpt
-                    - else
-                      = post.body.truncate(100)
-                    = link_to 'Read more', post, class: 'btn btn-secondary'
-          - else
-            = render partial: 'components/post_card', locals: {post: post}
+%h1
+  Blog Posts
+  = link_to 'New post', new_admin_post_path, class: 'btn btn-primary'
+- if @posts.present?
+  %h2 search
+  %table.table.table-striped
+    %thead.thead-default
+      %tr
+        %th
+        %th Name
+        %th Published date
+        %th Featured
+        %th Status
+        %th Actions
+    %tbody
+      - @posts.each do |post|
+        %tr
+          %td= image_tag 'http://lorempixel.com/60/40', class: 'img-fluid'
+          %td= link_to post.title, edit_admin_post_path(post.id)
+          %td= formatted_date post.publish_date
+          %td
+          %td
+          %td
+            show
+            edit
+            delete
+- else
+  Add some blog posts!
 
-      - else
-        Add some posts!
 
-%br
-%br
-%br
-%br
-= link_to 'New Post', new_admin_post_path
+
+
+
+-# .row
+-#   .col-xl-10.offset-xl-1
+-#     .row
+-#       - if @posts.present?
+-#         - @posts.each_with_index do |post, index|
+-#           - if index < 2
+-#             .col-lg-6
+-#               .card
+-#                 .row
+-#                   .col-sm-6
+-#                     = link_to post do
+-#                       = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
+-#                   .col-sm-6.card-block
+-#                     %h3= link_to post.title, post
+-#                     %p= post.publish_date
+-#                     - if post.excerpt.present?
+-#                       = post.excerpt
+-#                     - else
+-#                       = post.body.truncate(100)
+-#                     = link_to 'Read more', post, class: 'btn btn-secondary'
+-#           - else
+-#             = render partial: 'components/post_card', locals: {post: post}
+
+-#       - else
+-#         Add some posts!
+
+-# %br
+-# %br
+-# %br
+-# %br
+-# = link_to 'New Post', new_admin_post_path

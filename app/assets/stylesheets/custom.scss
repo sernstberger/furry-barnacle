@@ -247,7 +247,7 @@ $grid-gutter-widths: (
 //
 // Font, line-height, and color for body text, headings, and more.
 
-@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,700,700i|Montserrat:300,300i,500,500i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,700,700i|Montserrat:300,300i,500,500i,900,900i');
 
 $font-family-sans-serif: 'Montserrat', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $font-family-serif:      'Crimson Text', Georgia, "Times New Roman", Times, serif !default;
@@ -259,14 +259,15 @@ $font-size-lg:   1.25rem !default;
 $font-size-sm:   .875rem !default;
 $font-size-xs:   .75rem !default;
 
-$font-weight-normal: 300 !default;
-$font-weight-bold: 700 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 500 !default;
+$font-weight-bold: 900 !default;
 
 $font-weight-base: $font-weight-normal !default;
 $line-height-base: 1.5 !default;
 
 $font-size-h1: 2.5rem !default;
-$font-size-h2: 2rem !default;
+$font-size-h2: 1.75rem !default;
 $font-size-h3: 1.5rem !default;
 $font-size-h4: 1.2rem !default;
 $font-size-h5: 1rem !default;
@@ -294,7 +295,7 @@ $lead-font-weight: 300 !default;
 
 $small-font-size: 80% !default;
 
-$text-muted: $gray-light !default;
+$text-muted: $gray !default;
 
 $abbr-border-color: $gray-light !default;
 
@@ -349,15 +350,15 @@ $table-bg:                      transparent !default;
 $table-inverse-bg:              $gray-dark !default;
 $table-inverse-color:           $body-bg !default;
 
-$table-bg-accent:               rgba($black,.05) !default;
+$table-bg-accent:               rgba($gray,.075) !default;
 $table-bg-hover:                rgba($black,.075) !default;
 $table-bg-active:               $table-bg-hover !default;
 
 $table-head-bg:                 $gray-lighter !default;
-$table-head-color:              $gray !default;
+$table-head-color:              $gray-dark !default;
 
 $table-border-width:            $border-width !default;
-$table-border-color:            $gray-lighter !default;
+$table-border-color:            $gray-light !default;
 
 
 // Buttons
@@ -378,7 +379,7 @@ $btn-primary-border:             $btn-primary-bg !default;
 
 $btn-secondary-color:            $white !default;
 $btn-secondary-bg:               $gray !default;
-$btn-secondary-border:           $gray-dark !default;
+$btn-secondary-border:           $btn-secondary-bg !default;
 
 $btn-info-color:                 $white !default;
 $btn-info-bg:                    $brand-info !default;

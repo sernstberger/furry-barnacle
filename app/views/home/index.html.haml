@@ -1,6 +1,6 @@
 .jumbotron.jumbotron-fluid.bg-inverse
   .container
-    %h1
+    %h1.font-weight-bold
       %span.text-primary Furry Barnacle
       %span.text-white helps you find the places to visit as you plan your trip.
 
@@ -8,64 +8,29 @@
       = f.input :boo, placeholder: 'Where are you going?', label: false, input_html: {class: 'form-control-lg mt-5'}
       -# = f.submit 'Search', class: 'btn btn-primary'
 
-
-
-
 .container-fluid
   - if @destinations.present?
-    %h2 Top Destinations
     .row
-      .col-xxl-8.offset-xxl-2
+      .col-xl-10.offset-xl-1.col-xxl-8.offset-xxl-2
+        .row
+          .col.d-flex.justify-content-between.align-items-center
+            %h1.font-weight-bold Top Destinations
+            = link_to 'See all destinations', destinations_path
         .row
           - @destinations.each do |destination|
             = render partial: 'components/destination_card', locals: {destination: destination}
-    .row.mt-3.text-center
-      .col
-        = link_to 'See all destinations', destinations_path, class: 'btn btn-primary'
-
-  %hr
 
   - if @posts.present?
-    .row
-      .col-md-6
-        %h2 Recent Posts
-        .list-group
-          - @posts.each do |post|
-            -# = render partial: 'components/post_card', locals: {post: post}
-
-            .list-group-item
-              = image_tag 'http://lorempixel.com/100/100', class: 'img-fluid'
-              %h3= link_to post.title, post
-              - if post.excerpt.present?
-                .font-serif
-                  = post.excerpt
-              - else
-                .font-serif
-                  = post.body.truncate(100)
-
-              -# .row
-              -#   .col-sm-2
-              -#     = link_to post do
-              -#       = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
-              -#   .col-sm-10.card-block
-              -#     %h3= link_to post.title, post
-              -#     %p= formatted_date post.publish_date
-              -#     - if post.excerpt.present?
-              -#       .font-serif
-              -#         = post.excerpt
-              -#     - else
-              -#       .font-serif
-              -#         = post.body.truncate(100)
-              -#     = link_to 'Read more', post, class: 'btn btn-secondary'
-
-      .col-md-6
-        %h2 Featured Posts
+    .row.mt-5
+      .col-xl-10.offset-xl-1.col-xxl-8.offset-xxl-2
         .row
-          - @posts.each do |post|
-            = render partial: 'components/post_card', locals: {post: post}
+          .col-md-6
+            .list-group
+              .list-group-item
+                %h5.mb-0.text-uppercase Recent Posts
+              - @posts.each do |post|
+                = render partial: 'components/post_list_item', locals: {post: post}
+              = link_to 'See all posts', posts_path, class: 'list-group-item d-flex justify-content-center text-uppercase'
 
-
-
-    .row
-      .col
-        = link_to 'See all posts', '#', class: 'btn btn-primary'
+          .col-md-6
+            = render partial: 'components/post_card', locals: {post: @featured_post}

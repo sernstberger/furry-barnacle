@@ -1,26 +1,23 @@
-.row
-  .col-xl-10.offset-xl-1
-    .row
-      - if @attractions.present?
-        - @attractions.each do |attraction|
-          .col-lg-6
-            .card
-              .row
-                .col-sm-6
-                  = link_to attraction do
-                    = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
-                .col-sm-6.card-block
-                  %h3= link_to attraction.name, attraction
-                  - if attraction.excerpt.present?
-                    = attraction.excerpt
-                  - else
-                    = attraction.about.truncate(100)
-                  = link_to 'Read more', attraction, class: 'btn btn-secondary'
-      - else
-        Add some attractions!
-
-%br
-%br
-%br
-%br
-= link_to 'New Attraction', new_admin_attraction_path
+%h1
+  Attractions
+  = link_to 'New attraction', new_admin_attraction_path, class: 'btn btn-primary'
+- if @attractions.present?
+  %table.table
+    %thead
+      %tr
+        %th
+        %th Name
+        %th Destination
+        %th Actions
+    %tbody
+      - @attractions.each do |attraction|
+        %tr
+          %td= image_tag 'http://lorempixel.com/60/40', class: 'img-fluid'
+          %td= link_to attraction.name, edit_admin_attraction_path(attraction.id)
+          %td= attraction.destination.name
+          %td
+            show
+            edit
+            delete
+- else
+  Add some attractions!

@@ -1,0 +1,11 @@
+.list-group-item
+  .media
+    = image_tag 'http://lorempixel.com/120/80', class: 'd-flex mr-3'
+    .media-body
+      %h4.mt-0= link_to post.title, post
+      - if post.excerpt.present?
+        .font-serif
+          = post.excerpt
+      - else
+        .font-serif
+          = post.body.truncate(100)
