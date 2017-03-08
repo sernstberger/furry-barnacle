@@ -1,0 +1,20 @@
+%h1
+  Users
+  = link_to 'new user', '#', class: 'btn btn-primary'
+
+search
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th photo
+      %th email
+      %th name
+      %th action
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td
+        %td= user.email
+        %td
+        %td

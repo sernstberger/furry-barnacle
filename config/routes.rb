@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :destinations, except: [:show]
     resources :attractions, except: [:show]
     resources :photos, except: [:show]
+    resources :users, except: [:show]
     resources :planners, except: [:show]
   end
 

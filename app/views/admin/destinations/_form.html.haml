@@ -20,8 +20,16 @@
 
       %hr
 
+      - @destination.photos.each do |photo|
+        = image_tag photo.image.thumb, data: {image_id: photo.id}
+
+      %br
+      %br
       %button.btn.btn-primary{'data-target' => '#destinationImageModal', 'data-toggle' => 'modal', :type => 'button'}
         Add images
+      %br
+      %br
+      %br
 
 
 
