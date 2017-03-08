@@ -10,6 +10,7 @@ class Admin::DestinationsController < Admin::BaseController
   end
 
   def edit
+    @photos = Photo.all
   end
 
   def create
@@ -42,6 +43,6 @@ class Admin::DestinationsController < Admin::BaseController
     end
 
     def destination_params
-      params.require(:destination).permit(:name, :about, :city, :state, :slug, :excerpt)
+      params.require(:destination).permit(:name, :about, :city, :state, :slug, :excerpt, photo_ids: [])
     end
 end

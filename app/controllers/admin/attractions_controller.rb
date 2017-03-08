@@ -1,6 +1,6 @@
 class Admin::AttractionsController < Admin::BaseController
 
-  before_action :set_attraction, only: [:show, :edit, :update, :destroy]
+  before_action :set_attraction, only: [:edit, :update, :destroy]
 
   def index
     @attractions = Attraction.all
@@ -34,14 +34,10 @@ class Admin::AttractionsController < Admin::BaseController
   end
 
   def update
-    respond_to do |format|
-      if @attraction.update(attraction_params)
-        format.html { redirect_to @attraction, notice: 'Attraction was successfully updated.' }
-        format.json { render :show, status: :ok, location: @attraction }
-      else
-        format.html { render :edit }
-        format.json { render json: @attraction.errors, status: :unprocessable_entity }
-      end
+    if @attraction.update(attraction_params)
+      redirect_to edit_admin_attraction_path(@attraction.id), notice: 'Attraction was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -59,6 +55,6 @@ class Admin::AttractionsController < Admin::BaseController
     end
 
     def attraction_params
-      params.require(:attraction).permit(:name, :about, :slug, :destination_id, :excerpt, :website)
+      params.require(:attraction).permit(:name, :about, :slug, :destination_id, :excerpt, :website, destinations: [])
     end
 end

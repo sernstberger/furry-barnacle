@@ -20,15 +20,31 @@
 
       %hr
 
+      %button.btn.btn-primary{'data-target' => '#destinationImageModal', 'data-toggle' => 'modal', :type => 'button'}
+        Add images
+
+
+
+
+      #destinationImageModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'destinationImageModalLabel', role: 'dialog', tabindex: '-1'}
+        .modal-dialog{role: 'document'}
+          .modal-content
+            .modal-header
+              %h5#destinationImageModalLabel.modal-title Modal title
+              %button.close{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'}
+                %span{'aria-hidden' => 'true'} &times;
+            .modal-body
+              = f.association :photos, as: :check_boxes
+            .modal-footer
+              %button.btn.btn-secondary{'data-dismiss' => 'modal', type: 'button'} Close
+              %button.btn.btn-primary{type: 'button'} Save changes
+
+
+
       = f.trix_editor :about, class: 'form-control'
 
       %hr
 
       = f.input :excerpt
-
-
-      -# = f.input :status
-      -# = f.input :featured
-      -# = f.input :publish_date
 
       = f.button :submit, class: 'btn-primary'

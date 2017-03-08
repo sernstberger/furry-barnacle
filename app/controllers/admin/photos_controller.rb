@@ -48,6 +48,6 @@ class Admin::PhotosController < Admin::BaseController
     end
 
     def photo_params
-      params.require(:photo).permit(:image, :name, :description)
+      params.require(:photo).permit(:image, :name, :description, destination_ids: [])
     end
 end
