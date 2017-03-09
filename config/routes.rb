@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :destinations, only: [:index, :show]
   resources :attractions, only: [:index, :show]
   resources :photos, only: [:index, :show]
-  resources :planners, only: [:index, :show]
+  resources :planners
 
   namespace :admin do
     root 'dashboard#index'

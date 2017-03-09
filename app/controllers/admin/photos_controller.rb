@@ -1,4 +1,7 @@
 class Admin::PhotosController < Admin::BaseController
+
+  authorize_actions_for Photo
+
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
   def index

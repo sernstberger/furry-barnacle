@@ -1,4 +1,7 @@
 class Admin::PlannersController < Admin::BaseController
+
+  authorize_actions_for Planner
+
   before_action :set_planner, only: [:show, :edit, :update, :destroy]
 
   def index

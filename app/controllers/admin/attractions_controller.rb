@@ -1,5 +1,7 @@
 class Admin::AttractionsController < Admin::BaseController
 
+  authorize_actions_for Attraction
+
   before_action :set_attraction, only: [:edit, :update, :destroy]
 
   def index

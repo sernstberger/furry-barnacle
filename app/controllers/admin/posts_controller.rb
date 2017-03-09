@@ -1,4 +1,6 @@
 class Admin::PostsController < Admin::BaseController
+  authorize_actions_for Post
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index

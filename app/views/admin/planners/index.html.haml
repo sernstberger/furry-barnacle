@@ -1,18 +1,25 @@
 .container
   .row
     .col-xl-10.offset-xl-1
+      %h1 Planners
       .row
         - if @planners.present?
-          - @planners.each do |planner|
-            .col-sm-12
-              = link_to planner_path(planner) do
-                %li= planner.name
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Plan Name
+                %th User
+                %th actions
+            %tbody
+              - @planners.each do |planner|
+                .col-sm-12
+                  = link_to planner_path(planner) do
+                    %tr
+                      %td= planner.name
+                      %td= planner.user.email
+                      %td= link_to 'edit', edit_admin_planner_path(planner)
 
         - else
           Add some planners!
 
-%br
-%br
-%br
-%br
-= link_to 'New Planner', new_admin_planner_path
+-# = link_to 'New Planner', new_admin_planner_path

@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   include Authority::UserAbilities
+
+  include Authority::Abilities
+
+  has_many :users
 end
