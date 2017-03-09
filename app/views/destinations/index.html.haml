@@ -1,23 +1,16 @@
 .container-fluid
   .row
     .col-xl-10.offset-xl-1
-      order
-      most popular
-      alphabetic
+      %h1
+        Destinations
+        .btn
+          order
+          most popular
+          alphabetic
       .row
         - if @destinations.present?
-          - @destinations.each_with_index do |destination, index|
-            - if index < 1
-              .col-sm-12
-                .card
-                  .card-block
-                    = image_tag destination.photos.first.image.large
-                    .card-img-overlay
-                      %h2.card-title= destination.name
-                      %h4.card-text= destination.excerpt
-
-            - else
-              = render partial: 'components/destination_card', locals: {destination: destination}
+          - @destinations.each do |destination|
+            = render partial: 'components/destination_card', locals: {destination: destination}
 
   = link_to 'more', '#', class: 'btn btn-primary'
 

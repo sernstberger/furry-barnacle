@@ -1,4 +1,8 @@
 class Admin::DestinationsController < Admin::BaseController
+
+  # allow admins to do things in the admin
+  authorize_actions_for Destination
+
   before_action :set_destination, only: [:edit, :update, :destroy]
 
   def index

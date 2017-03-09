@@ -38,6 +38,7 @@ gem 'active_link_to'
 gem 'trix'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'authority'
 
 
 group :development, :test do
