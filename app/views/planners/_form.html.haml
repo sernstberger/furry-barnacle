@@ -4,9 +4,11 @@
     .row
       .col-sm-12
         = f.input :name
-        = f.input :start_date
-        = f.input :end_date
-        = f.input :user_id
+        .row
+          .col-sm-6
+            = f.input :start_date
+          .col-sm-6
+            = f.input :end_date
 
 
         .card

@@ -55,4 +55,14 @@
 
       = f.input :excerpt, input_html: {maxlength: 120}
 
+      %h3 Attractions
+      - if destination.attractions.present?
+        %ul
+          - destination.attractions.each do |attraction|
+            %li= attraction.name
+      - else
+        Add some attractions!
+
+      %hr
+
       = f.button :submit, class: 'btn-primary'

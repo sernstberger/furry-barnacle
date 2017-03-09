@@ -1,25 +1,27 @@
-.container
+.container-fluid
+  %h1 Planners
   .row
-    .col-xl-10.offset-xl-1
-      %h1 Planners
-      .row
-        - if @planners.present?
-          %table.table.table-striped
-            %thead
-              %tr
-                %th Plan Name
-                %th User
-                %th actions
-            %tbody
-              - @planners.each do |planner|
-                .col-sm-12
-                  = link_to planner_path(planner) do
-                    %tr
-                      %td= planner.name
-                      %td= planner.user.email
-                      %td= link_to 'edit', edit_admin_planner_path(planner)
+    - if @planners.present?
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Plan Name
+            %th Email
+            %th First Name
+            %th Last Name
+            %th actions
+        %tbody
+          - @planners.each do |planner|
+            .col-sm-12
+              = link_to planner_path(planner) do
+                %tr
+                  %td= planner.name
+                  %td= planner.user.email
+                  %td
+                  %td
+                  %td= link_to 'edit', edit_admin_planner_path(planner)
 
-        - else
-          Add some planners!
+    - else
+      Add some planners!
 
 -# = link_to 'New Planner', new_admin_planner_path
