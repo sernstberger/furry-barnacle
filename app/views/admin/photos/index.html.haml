@@ -2,6 +2,11 @@
   Photos
   = link_to 'New Photo', new_admin_photo_path, class: 'btn btn-primary'
 .row
+  .col-6.col-md-4.col-xl-3
+    .card
+      .card-block
+        %i.fa.fa-plus
+        add photo
   - if @photos.present?
     - @photos.each do |photo|
       .col-6.col-md-4.col-xl-3

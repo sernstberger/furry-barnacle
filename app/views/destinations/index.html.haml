@@ -8,7 +8,7 @@
           most popular
           alphabetic
 
-      = render partial: 'components/search', locals: {search_url: destinations_path, search_placeholder: 'Search destinations...'}
+      = render partial: 'components/search', locals: {search_url: destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
 
 
       .row
