@@ -4,7 +4,7 @@ class DestinationsController < ApplicationController
   def index
     @q = Destination.ransack(params[:q])
     # @destinations = Destination.order('name ASC')
-    @destinations = @q.result
+    @destinations = @q.result.page params[:page]
     # @q.result(distinct: true)
   end
 

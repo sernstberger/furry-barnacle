@@ -19,4 +19,5 @@
           - @destinations.each do |destination|
             = render partial: 'components/destination_card', locals: {destination: destination}
 
-  = link_to 'more', '#', class: 'btn btn-primary'
+  -# = link_to 'more', '#', class: 'btn btn-primary'
+  = paginate @destinations

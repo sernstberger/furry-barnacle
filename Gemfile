@@ -40,6 +40,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'authority'
 gem 'ransack'
+gem 'kaminari'
 
 
 group :development, :test do
