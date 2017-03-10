@@ -7,7 +7,7 @@ class Admin::DestinationsController < Admin::BaseController
 
   def index
     @q = Destination.ransack(params[:q])
-    @destinations = @q.result
+    @destinations = @q.result.order('name ASC').page(params[:page])
   end
 
   def new

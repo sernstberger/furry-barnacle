@@ -5,7 +5,8 @@ class Admin::AttractionsController < Admin::BaseController
   before_action :set_attraction, only: [:edit, :update, :destroy]
 
   def index
-    @attractions = Attraction.all
+    @q = Attraction.ransack(params[:q])
+    @attractions = @q.result.order('name ASC').page(params[:page])
   end
 
   def show

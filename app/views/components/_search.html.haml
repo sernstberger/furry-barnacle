@@ -1,5 +1,5 @@
 = search_form_for @q, url: search_url do |f|
-  = f.search_field :name_cont, placeholder: 'Search destinations...', class: 'form-control form-control-lg'
+  = f.search_field search_params, placeholder: search_placeholder, class: 'form-control form-control-lg'
   -# = f.submit
 
 -# = search_form_for @q, url: destinations_path, method: :post do |f|

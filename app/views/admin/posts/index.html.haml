@@ -2,7 +2,7 @@
   Blog Posts
   = link_to 'New post', new_admin_post_path, class: 'btn btn-primary'
 - if @posts.present?
-  %h2 search
+  = render partial: 'components/search', locals: {search_url: admin_posts_path, search_params: :title_cont, search_placeholder: 'Search posts...'}
   %table.table.table-striped
     %thead.thead-default
       %tr
@@ -24,6 +24,8 @@
             show
             edit
             delete
+
+  = paginate @posts
 - else
   Add some blog posts!
 

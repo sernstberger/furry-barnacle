@@ -1,9 +1,10 @@
 %h1
   Attractions
   = link_to 'New attraction', new_admin_attraction_path, class: 'btn btn-primary'
+= render partial: 'components/search', locals: {search_url: admin_attractions_path, search_params: :name_cont, search_placeholder: 'Search attractions...'}
 - if @attractions.present?
   %table.table
-    %thead
+    %thead.thead-default
       %tr
         %th
         %th Name
@@ -21,3 +22,5 @@
             delete
 - else
   Add some attractions!
+
+= paginate @attractions
