@@ -2,7 +2,7 @@
 
 
 .container
-  = image_tag @photo.image.jumbo, alt: @photo.name
+  = image_tag @photo.image.blurry, alt: @photo.name
   = @photo.description
 
   = link_to 'Edit', edit_photo_path(@photo)

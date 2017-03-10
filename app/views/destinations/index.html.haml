@@ -7,15 +7,16 @@
           order
           most popular
           alphabetic
+
+      = render partial: 'components/search', locals: {search_url: destinations_path}
+
+
       .row
+        - if @q.result.count < 1
+          %h2 no results found
+
         - if @destinations.present?
           - @destinations.each do |destination|
             = render partial: 'components/destination_card', locals: {destination: destination}
 
   = link_to 'more', '#', class: 'btn btn-primary'
-
-  %br
-  %br
-  %br
-  %br
-  = link_to 'New Destination', new_admin_destination_path

@@ -39,6 +39,7 @@ gem 'trix'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'authority'
+gem 'ransack'
 
 
 group :development, :test do

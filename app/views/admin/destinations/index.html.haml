@@ -2,7 +2,7 @@
   Destinations
   = link_to 'New Destination', new_admin_destination_path, class: 'btn btn-primary'
 
-%h2 search bar
+= render partial: 'components/search', locals: {search_url: admin_destinations_path}
 
 %table.table
   %thead

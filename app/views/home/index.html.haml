@@ -4,9 +4,11 @@
       %span.text-primary Furry Barnacle
       %span.text-white helps you find the places to visit as you plan your trip.
 
-    = simple_form_for :thing do |f|
-      = f.input :boo, placeholder: 'Where are you going?', label: false, input_html: {class: 'form-control-lg mt-5'}
-      -# = f.submit 'Search', class: 'btn btn-primary'
+    = render partial: 'components/search', locals: {search_url: destinations_path}
+
+    -# = simple_form_for :thing do |f|
+    -#   = f.input :boo, placeholder: 'Where are you going?', label: false, input_html: {class: 'form-control-lg mt-5'}
+    -#   -# = f.submit 'Search', class: 'btn btn-primary'
 
 .container-fluid
   - if @destinations.present?
@@ -17,7 +19,7 @@
             %h1.font-weight-bold Top Destinations
             = link_to 'See all destinations', destinations_path
         .row
-          - @destinations.each do |destination|
+          - @popular_destinations.each do |destination|
             = render partial: 'components/destination_card', locals: {destination: destination}
 
   - if @posts.present?

@@ -2,7 +2,10 @@ class DestinationsController < ApplicationController
   before_action :set_destination, only: [:show, :edit, :update, :destroy]
 
   def index
-    @destinations = Destination.order('name ASC')
+    @q = Destination.ransack(params[:q])
+    # @destinations = Destination.order('name ASC')
+    @destinations = @q.result
+    # @q.result(distinct: true)
   end
 
   def show

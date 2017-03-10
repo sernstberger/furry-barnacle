@@ -6,7 +6,8 @@ class Admin::DestinationsController < Admin::BaseController
   before_action :set_destination, only: [:edit, :update, :destroy]
 
   def index
-    @destinations = Destination.all
+    @q = Destination.ransack(params[:q])
+    @destinations = @q.result
   end
 
   def new
