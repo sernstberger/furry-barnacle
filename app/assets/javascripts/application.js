@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
@@ -19,6 +20,23 @@
 
 
 $(document).on('turbolinks:load', function() {
-  $("#carouselExampleSlidesOnly .carousel-indicators li:first").addClass("active");
-  $("#carouselExampleSlidesOnly .carousel-inner .carousel-item:first").addClass("active");
+  $('#carouselExampleSlidesOnly .carousel-indicators li:first').addClass('active');
+  $('#carouselExampleSlidesOnly .carousel-inner .carousel-item:first').addClass('active');
+
+
+
+
+
+  // sortable planner list
+  $( '#sortable' ).sortable({
+    // placeholder: 'ui-state-highlight'
+  });
+
+
+  $( '.blarg' ).sortable({
+    // placeholder: 'ui-state-highlight',
+    connectWith: ".blarg"
+  });
+
+
 });

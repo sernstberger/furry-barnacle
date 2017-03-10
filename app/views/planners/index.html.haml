@@ -5,7 +5,7 @@
         - if @planners.present?
           - @planners.each do |planner|
             .col-sm-12
-              = link_to planner_path(planner) do
+              = link_to edit_planner_path(planner) do
                 %li= planner.name
 
         - else
