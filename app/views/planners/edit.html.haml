@@ -1,7 +1,6 @@
-= link_to 'Back', planners_path
-.container
-  %h1 Editing Plan
+-# = link_to 'Back', planners_path
+.container-fluid
+  -# %h1 Editing Plan
   = render 'form', planner: @planner
-  = link_to 'Show', @planner
-  %br/
-  = link_to 'Destroy', @planner, method: :delete, data: { confirm: 'Are you sure?' }
+  -# = link_to 'Show', @planner
+  -# = link_to 'Destroy', @planner, method: :delete, data: { confirm: 'Are you sure?' }

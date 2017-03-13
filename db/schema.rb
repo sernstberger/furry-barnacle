@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309154429) do
+ActiveRecord::Schema.define(version: 20170313034306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 20170309154429) do
     t.index ["user_id"], name: "index_planners_on_user_id", using: :btree
   end
 
+  create_table "planners_attractions", force: :cascade do |t|
+    t.integer "planner_id"
+    t.integer "attraction_id"
+    t.date    "date"
+    t.integer "position"
+    t.index ["attraction_id"], name: "index_planners_attractions_on_attraction_id", using: :btree
+    t.index ["planner_id"], name: "index_planners_attractions_on_planner_id", using: :btree
+  end
+
   create_table "planners_destinations", force: :cascade do |t|
     t.integer "planner_id"
     t.integer "destinations_id"
@@ -112,6 +121,8 @@ ActiveRecord::Schema.define(version: 20170309154429) do
   add_foreign_key "destinations_photos", "destinations"
   add_foreign_key "destinations_photos", "photos"
   add_foreign_key "planners", "users"
+  add_foreign_key "planners_attractions", "attractions"
+  add_foreign_key "planners_attractions", "planners"
   add_foreign_key "planners_destinations", "destinations", column: "destinations_id"
   add_foreign_key "planners_destinations", "planners"
 end

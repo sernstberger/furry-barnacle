@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
   include Authority::Abilities
 
-  has_many :users
+  has_many :planners
 end

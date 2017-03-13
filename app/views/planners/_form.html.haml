@@ -1,47 +1,70 @@
-.container
-  = simple_form_for(@planner) do |f|
-    = f.error_notification
-    .row
-      .col-sm-12
-        = f.input :name
-        .row
-          .col-sm-6
-            = f.input :start_date
-          .col-sm-6
-            = f.input :end_date
+= simple_form_for planner do |f|
+  = f.error_notification
+  .row
+    .col-sm-4.col-xl-3.offset-xl-1
+      = render partial: 'components/search', locals: {search_url: destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
+      %p switch to a different destination
+      = render partial: 'components/search', locals: {search_url: attractions_path, search_params: :name_cont, search_placeholder: 'Search attractions...'}
+
+      = render partial: 'components/attraction_mini_card'
 
 
 
 
 
 
-        #sortable.accordion-plan{"aria-multiselectable" => "true", :role => "tablist"}
-          .card
-            #headingOne.card-header{:role => "tab"}
-              %h5.mb-0
-                %a{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-parent" => ".accordion-plan", "data-toggle" => "collapse", :href => "#collapseOne"}
-                  Collapsible Group Item #1
-              %p Visiting blah blah blah
-            #collapseOne.collapse.show{"aria-labelledby" => "headingOne", :role => "tabpanel"}
-              .card-block
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 
-                %ul.blarg
-                  %li put things here
-                  %li other stuff
-                  %li ahhhhhhh
-          .card
+
+    .col-sm-8.col-xl-7
+      -# - @planner.attraction.each do |pa|
+      -#   = pa.inspect
+
+      = @planner.attractions.inspect
+      -# - @destination.photos.each do |photo|
+      -#   = image_tag photo.image.thumb, data: {image_id: photo.id}
+
+
+
+
+      = f.input :name, input_html: {class: 'form-control-lg'}
+      .row
+        .col-6
+          = f.input :start_date, as: :datepicker
+        .col-6
+          = f.input :end_date, as: :datepicker
+
+
+
+
+      #sortable.accordion-plan{'aria-multiselectable' => 'true', :role => 'tablist'}
+        .card
+          #headingOne.card-header{:role => 'tab'}
+            %h5.mb-0
+              = link_to '#collapseOne', {'aria-controls' => 'collapseOne', 'aria-expanded' => 'true', 'data-parent' => '.accordion-plan', 'data-toggle' => 'collapse'} do
+                Wednesday, April 25, 2017
+
+          #collapseOne.collapse.show{'aria-labelledby' => 'headingOne', :role => 'tabpanel'}
             .card-block
-              Item 2
-              %p visiting something
-              %ul.blarg
-                %li put things here
-                %li other stuff
-                %li ahhhhhhh
-          .card
-            .card-block
-              Item 3
-              %p visiting ahhhhhhhhh
 
 
-        = f.button :submit, class: 'btn-primary'
+
+              .blarg
+                = render partial: 'components/attraction_mini_card'
+
+
+
+
+
+        .card
+          .card-block
+            Thursday, April 26, 2017
+            %ul.blarg
+              %li put things here
+              %li other stuff
+              %li ahhhhhhh
+        .card
+          .card-block
+            Friday, April 27, 2017
+
+
+      = f.button :submit, class: 'btn-primary'

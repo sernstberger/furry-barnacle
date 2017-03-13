@@ -20,6 +20,7 @@
 
       %hr
 
+      = @destination.photos.inspect
       - @destination.photos.each do |photo|
         = image_tag photo.image.thumb, data: {image_id: photo.id}
 

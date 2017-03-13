@@ -1,0 +1,2 @@
+class PlannersAttractions < ApplicationRecord
+end

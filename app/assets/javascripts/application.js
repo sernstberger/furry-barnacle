@@ -25,6 +25,14 @@ $(document).on('turbolinks:load', function() {
 
 
 
+  $('input.datepicker').datepicker({
+    onSelect: function () {
+      // console.log(this.id);
+      inputId = this.id
+      $('input[type="hidden"]#' + inputId).val(this.value);
+    },
+    dateFormat: 'yy-mm-dd'
+  });
 
 
   // sortable planner list

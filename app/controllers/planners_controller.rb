@@ -1,5 +1,7 @@
 class PlannersController < ApplicationController
   before_action :set_planner, only: [:show, :edit, :update, :destroy]
+  before_action :destination_search, only: [:edit, :update]
+  before_action :attraction_search, only: [:edit, :update]
 
   def index
     @planners = Planner.all
@@ -55,7 +57,17 @@ class PlannersController < ApplicationController
       @planner = Planner.find(params[:id])
     end
 
+    def destination_search
+      @q = Destination.ransack(params[:q])
+      @destinations = @q.result.page(params[:page])
+    end
+
+    def attraction_search
+      @q = Attraction.ransack(params[:q])
+      @attractions = @q.result.page(params[:page])
+    end
+
     def planner_params
-      params.require(:planner).permit(:name, :start_date, :end_date, :user_id)
+      params.require(:planner).permit(:name, :start_date, :end_date, :user_id, planners_destinations_attributes: [])
     end
 end
