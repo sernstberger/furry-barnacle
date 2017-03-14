@@ -6,5 +6,7 @@ class Attraction < ApplicationRecord
   friendly_id :name, use: [:slugged, :history]
 
   belongs_to :destination
-  has_and_belongs_to_many :planners
+
+  has_many :stops
+  has_many :planners, through: :stops
 end

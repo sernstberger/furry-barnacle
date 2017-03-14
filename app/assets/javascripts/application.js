@@ -37,13 +37,17 @@ $(document).on('turbolinks:load', function() {
 
   // sortable planner list
   $( '#sortable' ).sortable({
-    // placeholder: 'ui-state-highlight'
+    placeholder: '.ui-state-highlight',
+        forcePlaceholderSize: true // <--- add this
+
   });
 
 
   $( '.blarg' ).sortable({
-    // placeholder: 'ui-state-highlight',
-    connectWith: ".blarg"
+    placeholder: 'ui-state-highlight',
+    connectWith: ".blarg",
+    revert: true,
+    dropOnEmpty: true
   });
 
 

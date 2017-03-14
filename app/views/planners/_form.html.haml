@@ -6,65 +6,31 @@
       %p switch to a different destination
       = render partial: 'components/search', locals: {search_url: attractions_path, search_params: :name_cont, search_placeholder: 'Search attractions...'}
 
-      = render partial: 'components/attraction_mini_card'
-
-
-
-
-
-
-
+      // bring back later
+      -# = render partial: 'components/attraction_mini_card'
 
     .col-sm-8.col-xl-7
-      -# - @planner.attraction.each do |pa|
-      -#   = pa.inspect
-
-      = @planner.attractions.inspect
-      -# - @destination.photos.each do |photo|
-      -#   = image_tag photo.image.thumb, data: {image_id: photo.id}
-
-
-
-
       = f.input :name, input_html: {class: 'form-control-lg'}
       .row
         .col-6
-          = f.input :start_date, as: :datepicker
+          = f.input :start_date, as: :datepicker, input_html: {class: 'form-control'}
         .col-6
-          = f.input :end_date, as: :datepicker
-
-
-
+          = f.input :end_date, as: :datepicker, input_html: {class: 'form-control'}
 
       #sortable.accordion-plan{'aria-multiselectable' => 'true', :role => 'tablist'}
-        .card
-          #headingOne.card-header{:role => 'tab'}
-            %h5.mb-0
-              = link_to '#collapseOne', {'aria-controls' => 'collapseOne', 'aria-expanded' => 'true', 'data-parent' => '.accordion-plan', 'data-toggle' => 'collapse'} do
-                Wednesday, April 25, 2017
-
-          #collapseOne.collapse.show{'aria-labelledby' => 'headingOne', :role => 'tabpanel'}
-            .card-block
-
-
-
-              .blarg
-                = render partial: 'components/attraction_mini_card'
-
-
-
-
-
-        .card
-          .card-block
-            Thursday, April 26, 2017
-            %ul.blarg
-              %li put things here
-              %li other stuff
-              %li ahhhhhhh
-        .card
-          .card-block
-            Friday, April 27, 2017
+        - @plan = Planner.includes(:stops).find(params[:id])
+        - @plan.stops.group_by{ |stop| stop.date}.each_with_index do |(date, stops), index|
+          .card.mt-2
+            - index = index.to_s
+            .card-header{role: 'tab', id: "heading-#{index}"}
+              %h5.mb-0
+                = link_to "#collapse-#{index}", {'aria-controls' => "collapse-#{index}", 'aria-expanded' => 'true', 'data-toggle' => 'collapse'} do
+                  = date.inspect
+            .collapse.show{'aria-labelledby' => "heading-#{index}", :role => 'tabpanel', id: "collapse-#{index}"}
+              .card-block
+                .blarg
+                  - stops.each do |stop|
+                    = render partial: 'components/attraction_mini_card', locals: {stop: stop}
 
 
       = f.button :submit, class: 'btn-primary'

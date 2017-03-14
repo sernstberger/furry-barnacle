@@ -1,2 +1,0 @@
-class PlannersDestinations < ApplicationRecord
-end

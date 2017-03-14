@@ -26,7 +26,14 @@
           %li.nav-item
             = active_link_to 'Blog', posts_path, class: 'nav-link'
           %li.nav-item
-            = active_link_to 'Planner', planners_path, class: 'nav-link'
+            - @planner_count = Planner.where(user: current_user).count
+            - if @planner_count == 0
+              - @plan_path = new_planner_path
+            - elsif @planner_count == 1
+              - @plan_path = edit_planner_path(1)
+            - else
+              - @plan_path = planners_path
+            = active_link_to 'Planner', @plan_path, class: 'nav-link'
 
 
 

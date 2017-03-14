@@ -80,3 +80,60 @@ b, strong {
 //     box-shadow: 0 10px 40px rgba(black, .2);
 //   }
 // }
+
+.card-header {
+  background-color: $white;
+}
+
+
+
+.blarg {
+  background-color: blue;
+  min-height: 80px;
+}
+
+
+.ui-state-highlight {
+  border: 2px dashed $gray;
+  height: 80px;
+  width: 100%;
+}
+
+.ui-sortable-handle {
+  box-shadow: 0 0 0 rgba($black, .1);
+  transition: 2500ms box-shadow;
+  &.ui-sortable-helper {
+    box-shadow: 0 4px 20px rgba($black, .5);
+  }
+}
+
+
+
+
+.ui-datepicker {
+  background-color: $white;
+  box-shadow: 0 2px 20px black;
+
+  .ui-datepicker-header {
+    position: relative;
+    text-align: center;
+  }
+  .ui-datepicker-next, .ui-datepicker-prev {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+  .ui-datepicker-next {
+    left: auto;
+    right: 0;
+  }
+
+  thead {
+    background-color: $gray-light;
+  }
+
+  .ui-state-active {
+    color: $white;
+    background-color: $brand-primary;
+  }
+}

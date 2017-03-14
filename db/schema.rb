@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313034306) do
+ActiveRecord::Schema.define(version: 20170313152603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170313034306) do
     t.string  "website"
     t.index ["destination_id"], name: "index_attractions_on_destination_id", using: :btree
     t.index ["slug"], name: "index_attractions_on_slug", unique: true, using: :btree
+  end
+
+  create_table "attractions_planners", force: :cascade do |t|
+    t.integer "attraction_id"
+    t.integer "planner_id"
+    t.date    "date"
+    t.integer "position"
+    t.index ["attraction_id"], name: "index_attractions_planners_on_attraction_id", using: :btree
+    t.index ["planner_id"], name: "index_attractions_planners_on_planner_id", using: :btree
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -69,25 +78,6 @@ ActiveRecord::Schema.define(version: 20170313034306) do
     t.index ["user_id"], name: "index_planners_on_user_id", using: :btree
   end
 
-  create_table "planners_attractions", force: :cascade do |t|
-    t.integer "planner_id"
-    t.integer "attraction_id"
-    t.date    "date"
-    t.integer "position"
-    t.index ["attraction_id"], name: "index_planners_attractions_on_attraction_id", using: :btree
-    t.index ["planner_id"], name: "index_planners_attractions_on_planner_id", using: :btree
-  end
-
-  create_table "planners_destinations", force: :cascade do |t|
-    t.integer "planner_id"
-    t.integer "destinations_id"
-    t.date    "date"
-    t.time    "start_time"
-    t.time    "end_time"
-    t.index ["destinations_id"], name: "index_planners_destinations_on_destinations_id", using: :btree
-    t.index ["planner_id"], name: "index_planners_destinations_on_planner_id", using: :btree
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -97,6 +87,15 @@ ActiveRecord::Schema.define(version: 20170313034306) do
     t.text     "excerpt"
     t.datetime "publish_date"
     t.index ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
+  end
+
+  create_table "stops", force: :cascade do |t|
+    t.integer "planner_id"
+    t.integer "attraction_id"
+    t.date    "date"
+    t.integer "position"
+    t.index ["attraction_id"], name: "index_stops_on_attraction_id", using: :btree
+    t.index ["planner_id"], name: "index_stops_on_planner_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -118,11 +117,11 @@ ActiveRecord::Schema.define(version: 20170313034306) do
   end
 
   add_foreign_key "attractions", "destinations"
+  add_foreign_key "attractions_planners", "attractions"
+  add_foreign_key "attractions_planners", "planners"
   add_foreign_key "destinations_photos", "destinations"
   add_foreign_key "destinations_photos", "photos"
   add_foreign_key "planners", "users"
-  add_foreign_key "planners_attractions", "attractions"
-  add_foreign_key "planners_attractions", "planners"
-  add_foreign_key "planners_destinations", "destinations", column: "destinations_id"
-  add_foreign_key "planners_destinations", "planners"
+  add_foreign_key "stops", "attractions"
+  add_foreign_key "stops", "planners"
 end

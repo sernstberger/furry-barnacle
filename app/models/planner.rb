@@ -3,5 +3,7 @@ class Planner < ApplicationRecord
   include Authority::Abilities
 
   belongs_to :user
-  has_and_belongs_to_many :planners
+
+  has_many :stops
+  has_many :attractions, through: :stops
 end

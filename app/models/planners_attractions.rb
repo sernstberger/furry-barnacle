@@ -1,2 +1,0 @@
-class PlannersAttractions < ApplicationRecord
-end

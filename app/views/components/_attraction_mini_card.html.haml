@@ -1,15 +1,15 @@
 .card
-  .card-block
+  .card-block.p-0
     .media
-      .d-flex.align-self-center.mr-3
-        %i.fa.fa-align-justify
-      = image_tag 'http://lorempixel.com/120/80', class: 'd-flex mr-3 align-self-center'
-      .media-body
-        %h4.mb-1 adlkfjdsaf
-        %p.mb-1 alkdjfsdfs
+      = image_tag 'http://lorempixel.com/120/80', class: 'd-flex mr-3 align-self-center rounded-left'
+      .media-body.align-self-center
+        %h4.mb-1= stop.attraction.name
+        -# %p.mb-1 alkdjfsdfs
         .small.text-muted 2 hours
 
       .d-flex.align-self-center.mr-3
-        = link_to 'view', '#', class: 'btn btn-outline-secondary'
-      .d-flex.align-self-center
-        %i.fa.fa-times
+        = link_to '#', class: 'btn btn-outline-secondary mr-2' do
+          %i.fa.fa-align-justify
+        = link_to 'view', attraction_path(stop.attraction), class: 'btn btn-outline-secondary mr-2'
+        = link_to '#', class: 'btn btn-outline-secondary' do
+          %i.fa.fa-times
