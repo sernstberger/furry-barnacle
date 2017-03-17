@@ -33,14 +33,10 @@ class PlannersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @planner.update(planner_params)
-        format.html { redirect_to @planner, notice: 'Planner was successfully updated.' }
-        format.json { render :show, status: :ok, location: @planner }
-      else
-        format.html { render :edit }
-        format.json { render json: @planner.errors, status: :unprocessable_entity }
-      end
+    if @planner.update(planner_params)
+      redirect_to edit_planner_path(@planner), notice: 'Planner was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -50,6 +46,13 @@ class PlannersController < ApplicationController
       format.html { redirect_to planners_url, notice: 'Planner was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def sort
+    params[:stop].each_with_index do |id, index|
+      Stop.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
   end
 
   private
@@ -68,6 +71,6 @@ class PlannersController < ApplicationController
     end
 
     def planner_params
-      params.require(:planner).permit(:name, :start_date, :end_date, :user_id, planners_destinations_attributes: [])
+      params.require(:planner).permit(:name, :start_date, :end_date, :user_id, stops_attributes: [])
     end
 end

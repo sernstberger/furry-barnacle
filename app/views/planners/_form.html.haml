@@ -5,7 +5,9 @@
       = render partial: 'components/search', locals: {search_url: destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
       %p switch to a different destination
       = render partial: 'components/search', locals: {search_url: attractions_path, search_params: :name_cont, search_placeholder: 'Search attractions...'}
-
+      - Attraction.all.each do |a|
+        = a.name
+        %br
       // bring back later
       -# = render partial: 'components/attraction_mini_card'
 
@@ -17,20 +19,25 @@
         .col-6
           = f.input :end_date, as: :datepicker, input_html: {class: 'form-control'}
 
-      #sortable.accordion-plan{'aria-multiselectable' => 'true', :role => 'tablist'}
+      %hr
+
+      #sortable.accordion-plan{'aria-multiselectable' => 'true', role: 'tablist'}
         - @plan = Planner.includes(:stops).find(params[:id])
-        - @plan.stops.group_by{ |stop| stop.date}.each_with_index do |(date, stops), index|
+
+        %p unscheduled attractions go here
+        - @plan.stops.order('position').group_by{ |stop| stop.date}.each_with_index do |(date, stops), index|
           .card.mt-2
             - index = index.to_s
             .card-header{role: 'tab', id: "heading-#{index}"}
               %h5.mb-0
-                = link_to "#collapse-#{index}", {'aria-controls' => "collapse-#{index}", 'aria-expanded' => 'true', 'data-toggle' => 'collapse'} do
+                = link_to "#collapse-#{index}", {aria: {controls: "collapse-#{index}", expanded: 'true'}, data: {toggle: 'collapse'}} do
                   = date.inspect
-            .collapse.show{'aria-labelledby' => "heading-#{index}", :role => 'tabpanel', id: "collapse-#{index}"}
-              .card-block
-                .blarg
+            .collapse.show{aria: {labelledby: "heading-#{index}"}, role: 'tabpanel', id: "collapse-#{index}"}
+              .card-block.pt-0
+                .stop-list{ data: {update_url: "#{sort_planners_url}"} }
+                  .emptyMessage
+                    This is empty
                   - stops.each do |stop|
                     = render partial: 'components/attraction_mini_card', locals: {stop: stop}
 
-
-      = f.button :submit, class: 'btn-primary'
+      = f.button :submit, class: 'btn btn-primary'

@@ -38,16 +38,37 @@ $(document).on('turbolinks:load', function() {
   // sortable planner list
   $( '#sortable' ).sortable({
     placeholder: '.ui-state-highlight',
-        forcePlaceholderSize: true // <--- add this
-
+    forcePlaceholderSize: true
   });
 
 
-  $( '.blarg' ).sortable({
+  $( '.stop-list' ).sortable({
     placeholder: 'ui-state-highlight',
-    connectWith: ".blarg",
+    connectWith: ".stop-list",
     revert: true,
-    dropOnEmpty: true
+    dropOnEmpty: true,
+    scroll: true,
+    // items: "div:not(.emptyMessage)",
+    update: function() {
+      // $.post($(this).data('update_url'), $(this).sortable('serialize'))
+
+      // $.post($(this).data('update-url', $(this).sortable('serialize'))
+      console.log( $(this).data('update-url') );
+      console.log( $(this).sortable('serialize') );
+      $.post($(this).data('update-url', $(this).sortable('serialize')));
+
+    },
+    receive: function(event, ui) {
+           //hide empty message on receiver
+           $('.emptyMessage', this).removeClass('shown');
+
+           //show empty message on sender if applicable
+           if($('div:not(.emptyMessage)', ui.sender).length == 0){
+               $('.emptyMessage', ui.sender).addClass('shown');
+           } else {
+               $('.emptyMessage', ui.sender).removeClass('shown');
+           }
+       }
   });
 
 

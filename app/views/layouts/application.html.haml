@@ -7,7 +7,7 @@
     %meta{content: "Awesome Description Here", name: "description"}/
 
     // TODO add page title to this
-    %title Furry Barnacle
+    %title Bestination
     = csrf_meta_tags
     %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :integrity => "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", :rel => "stylesheet"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -16,9 +16,9 @@
     = render 'components/flash_messages'
 
     %nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.fixed-top
-      %button.navbar-toggler.navbar-toggler-right{"data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %button.navbar-toggler.navbar-toggler-right{"data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", type: "button"}
         %span.navbar-toggler-icon
-      = link_to 'Furry Barnacle', root_path, class: 'navbar-brand'
+      = link_to 'Bestination', root_path, class: 'navbar-brand'
       #navbarSupportedContent.collapse.navbar-collapse
         %ul.navbar-nav.mr-auto
           %li.nav-item
@@ -35,14 +35,15 @@
               - @plan_path = planners_path
             = active_link_to 'Planner', @plan_path, class: 'nav-link'
 
-
-
-          %li.nav-item
-            = link_to 'Admin', admin_root_path, class: 'nav-link'
         %ul.navbar-nav
           - if user_signed_in?
-            %li.nav-item
-              = link_to'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
+            %li.nav-item.dropdown
+              %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
+                = current_user.email
+              .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+                = link_to 'Admin', admin_root_path, class: 'dropdown-item'
+                = link_to 'Profile', '#', class: 'dropdown-item'
+                = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item'
           - else
             %li.nav-item
               = link_to 'Login', new_user_session_path, class: 'nav-link'

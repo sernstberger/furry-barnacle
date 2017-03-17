@@ -82,28 +82,21 @@ b, strong {
 // }
 
 .card-header {
-  background-color: $white;
-}
-
-
-
-.blarg {
-  background-color: blue;
-  min-height: 80px;
+  // background-color: $white;
 }
 
 
 .ui-state-highlight {
   border: 2px dashed $gray;
-  height: 80px;
+  height: 82px;
   width: 100%;
 }
 
 .ui-sortable-handle {
   box-shadow: 0 0 0 rgba($black, .1);
-  transition: 2500ms box-shadow;
+  transition: 250ms box-shadow;
   &.ui-sortable-helper {
-    box-shadow: 0 4px 20px rgba($black, .5);
+    box-shadow: $shadow;
   }
 }
 
@@ -112,7 +105,7 @@ b, strong {
 
 .ui-datepicker {
   background-color: $white;
-  box-shadow: 0 2px 20px black;
+  box-shadow: $shadow;
 
   .ui-datepicker-header {
     position: relative;
@@ -137,3 +130,35 @@ b, strong {
     background-color: $brand-primary;
   }
 }
+
+
+.stop-list {
+  min-height: 80px;
+}
+
+.emptyMessage {
+  height: 0;
+  // margin-top: 40px;
+  opacity: 0;
+  text-align: center;
+  transition: all 250ms;
+  visibility: hidden;
+
+  &.shown {
+    border: 2px dashed $gray;
+    height: 80px;
+    line-height: 80px;
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+
+// div:hover > ul {
+//   visibility: visible;
+//   opacity: 1;
+// }
+
+

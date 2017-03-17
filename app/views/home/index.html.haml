@@ -1,8 +1,8 @@
 .jumbotron.jumbotron-fluid.bg-inverse
   .container
     %h1.font-weight-bold
-      %span.text-primary Furry Barnacle
-      %span.text-white helps you find the places to visit as you plan your trip.
+      %span.text-primary Bestination
+      %span.text-white helps you plan your trip.
 
     = render partial: 'components/search', locals: {search_url: destinations_path, search_params: :name_cont, search_placeholder: 'Where are you going?'}
 
