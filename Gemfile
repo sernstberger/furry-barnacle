@@ -42,6 +42,9 @@ gem 'carrierwave'
 gem 'authority'
 gem 'kaminari'
 gem 'acts_as_list'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 
 group :development, :test do

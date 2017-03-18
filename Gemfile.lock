@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.0.1)
       actionpack (= 5.0.1)
@@ -174,6 +175,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.1)
       sprockets-rails (>= 2.0.0)
+    rails-assets-tether (1.4.0)
     rails-dom-testing (2.0.2)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6)
@@ -197,7 +199,7 @@ GEM
       ffi (>= 0.5.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    rollbar (2.14.0)
+    rollbar (2.14.1)
       multi_json
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -271,6 +273,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rack-mini-profiler
   rails (~> 5.0.1)
+  rails-assets-tether (>= 1.3.3)!
   ransack
   rollbar
   sass-rails (~> 5.0)
