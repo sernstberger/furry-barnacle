@@ -39,10 +39,7 @@ class Admin::PhotosController < Admin::BaseController
 
   def destroy
     @photo.destroy
-    respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_photos_path, notice: 'Photo was successfully destroyed.'
   end
 
   private

@@ -2,16 +2,16 @@
   Destinations
   = link_to 'New Destination', new_admin_destination_path, class: 'btn btn-primary'
 
-= render partial: 'components/search', locals: {search_url: admin_destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
+- if @destinations.present?
+  = render partial: 'components/search', locals: {search_url: admin_destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
 
-%table.table
-  %thead.thead-default
-    %tr
-      %th
-      %th Name
-      %th something
-  %tbody
-    - if @destinations.present?
+  %table.table
+    %thead.thead-default
+      %tr
+        %th
+        %th Name
+        %th something
+    %tbody
       - @destinations.each do |destination|
         %tr
           %td
@@ -22,4 +22,10 @@
               = destination.name
           %td= link_to 'Edit', edit_admin_destination_path(destination.id)
 
-= paginate @destinations
+  = paginate @destinations
+
+- else
+  .card
+    .card-block
+      No destinations, yet.
+      = link_to 'New Destination', new_admin_destination_path, class: 'btn btn-primary'

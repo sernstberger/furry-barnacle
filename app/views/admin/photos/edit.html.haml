@@ -3,4 +3,4 @@
 %h1 Editing Photo
 = render 'form', photo: @photo
 %br/
-= link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'Destroy', [:admin, @photo], method: :delete, data: { confirm: 'Are you sure?' }

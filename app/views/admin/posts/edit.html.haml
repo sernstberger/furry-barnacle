@@ -3,4 +3,4 @@
 = render 'form', post: @post
 = link_to 'Show', @post
 %br/
-= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'Destroy', [:admin, @post], method: :delete, data: { confirm: 'Are you sure?' }
