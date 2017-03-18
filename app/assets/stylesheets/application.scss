@@ -155,6 +155,12 @@ b, strong {
 }
 
 
+#admin-sidebar {
+  .nav-link.active {
+    box-shadow: -5px 0 $gray-dark;
+    color: $gray-dark;
+  }
+}
 
 // div:hover > ul {
 //   visibility: visible;

@@ -50,7 +50,8 @@ class PlannersController < ApplicationController
 
   def sort
     params[:stop].each_with_index do |id, index|
-      Stop.update_all({position: index+1}, {id: id})
+      # Stop.update_all({position: index+1}, {id: id})
+      Stop.update_all("position = #{index+1}, id = #{id}")
     end
     render nothing: true
   end

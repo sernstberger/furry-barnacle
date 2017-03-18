@@ -1,7 +1,7 @@
-= link_to 'Back', destinations_path
+= link_to 'Back', attractions_path
 .container
-  %h1 Editing Destination
-  = render 'form', destination: @destination
-  = link_to 'Show', @destination
+  %h1 Editing Attraction
+  = render 'form', attraction: @attraction
+  = link_to 'Show', @attraction
   %br/
-  = link_to 'Destroy', @destination, method: :delete, data: { confirm: 'Are you sure?' }
+  = link_to 'Destroy', [:admin, :attraction], method: :delete, data: { confirm: 'Are you sure?' }

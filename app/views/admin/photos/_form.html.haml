@@ -1,7 +1,7 @@
 = simple_form_for [:admin, @photo] do |f|
   = f.error_notification
   .row
-    .col-s-12
+    .col-sm-12
       - if @photo.image.present?
         .foo
           = image_tag @photo.image.large

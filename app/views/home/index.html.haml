@@ -34,5 +34,6 @@
                 = render partial: 'components/post_list_item', locals: {post: post}
               = link_to 'See all posts', posts_path, class: 'list-group-item d-flex justify-content-center text-uppercase'
 
-          .col-md-6
-            = render partial: 'components/post_card', locals: {post: @featured_post}
+          - if @featured_post.present?
+            .col-md-6
+              = render partial: 'components/post_card', locals: {post: @featured_post}

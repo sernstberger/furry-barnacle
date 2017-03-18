@@ -7,6 +7,6 @@ class Attraction < ApplicationRecord
 
   belongs_to :destination
 
-  has_many :stops
+  has_many :stops, dependent: :destroy
   has_many :planners, through: :stops
 end

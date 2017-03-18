@@ -46,10 +46,7 @@ class Admin::AttractionsController < Admin::BaseController
 
   def destroy
     @attraction.destroy
-    respond_to do |format|
-      format.html { redirect_to attractions_url, notice: 'Attraction was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_attractions_path, notice: 'Attraction was successfully destroyed.'
   end
 
   private

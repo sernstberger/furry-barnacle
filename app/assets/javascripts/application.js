@@ -50,12 +50,9 @@ $(document).on('turbolinks:load', function() {
     scroll: true,
     // items: "div:not(.emptyMessage)",
     update: function() {
-      // $.post($(this).data('update_url'), $(this).sortable('serialize'))
-
-      // $.post($(this).data('update-url', $(this).sortable('serialize'))
       console.log( $(this).data('update-url') );
       console.log( $(this).sortable('serialize') );
-      $.post($(this).data('update-url', $(this).sortable('serialize')));
+      $.post($(this).data('update-url'), $(this).sortable('serialize'));
 
     },
     receive: function(event, ui) {
