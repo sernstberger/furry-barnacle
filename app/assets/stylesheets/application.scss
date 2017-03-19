@@ -169,4 +169,24 @@ b, strong {
 //   opacity: 1;
 // }
 
+#photo-checkboxes {
+  input.check_boxes {
+    display: none;
+
+    &:checked {
+      + .photo-wrapper {
+        position: relative;
+        &:after {
+          box-shadow: inset 0 0 0 .5rem $brand-primary;
+          bottom: 0;
+          content: '';
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+}
 
