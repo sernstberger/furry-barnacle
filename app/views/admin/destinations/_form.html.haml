@@ -7,8 +7,8 @@
 
       %h6
         = request.base_url + '/destination/'
-        %span.d-inline-block= f.input :slug, label: false, input_html: {class: 'form-control-sm'}, wrapper_html: {class: 'mb-0'}
-        = link_to 'go', @destination, class: 'btn btn-secondary btn-sm'
+        %span.d-inline-block= f.input :slug, label: false, input_html: {class: 'form-control-sm', tabindex: '-1'}, wrapper_html: {class: 'mb-0'}
+        = link_to 'go', @destination, class: 'btn btn-secondary btn-sm', tabindex: '-1'
 
       %hr
 
@@ -20,9 +20,9 @@
 
       %hr
 
-      = @destination.photos.inspect
-      - @destination.photos.each do |photo|
-        = image_tag photo.image.thumb, data: {image_id: photo.id}
+      - if @destination.photos.present?
+        - @destination.photos.each do |photo|
+          = image_tag photo.image.thumb, data: {image_id: photo.id}
 
       %br
       %br

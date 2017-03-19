@@ -68,6 +68,15 @@ $(document).on('turbolinks:load', function() {
            }
        }
   });
+});
 
 
+
+
+$(document).on('change', '#destination_name', function() {
+  if ( $('#destination_slug').val() == '' ) {
+    slug = $('#destination_name').val().toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+    // console.log('slug: ' + slug);
+    $('#destination_slug').val(slug)
+  }
 });

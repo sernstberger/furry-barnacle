@@ -7,7 +7,7 @@
       = f.input :slug
       = link_to 'go to page', '#', class: 'btn btn-secondary'
 
-      = f.input :about
+      = f.trix_editor :about, class: 'form-control'
 
       = f.association :destination
 
