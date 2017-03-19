@@ -1,0 +1,11 @@
+- sectionName = controller_name.classify
+
+.row
+  .col-sm-8
+    %h1.m-0= sectionName.pluralize
+  .col-sm-4.align-self-center.justify-content-end.d-flex
+    = link_to eval("new_admin_#{sectionName.downcase}_path"), class: 'btn btn-primary' do
+      %i.fa.fa-plus
+      New
+      = sectionName
+%hr

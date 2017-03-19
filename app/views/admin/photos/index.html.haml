@@ -1,6 +1,5 @@
-%h1
-  Photos
-  = link_to 'New Photo', new_admin_photo_path, class: 'btn btn-primary'
+= render 'admin/components/page_header'
+
 .row
   .col-6.col-md-4.col-xl-3
     = link_to new_admin_photo_path, class: 'card' do

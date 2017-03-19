@@ -1,11 +1,10 @@
-%h1
-  Destinations
-  = link_to 'New Destination', new_admin_destination_path, class: 'btn btn-primary'
+= render 'admin/components/page_header'
 
 - if @destinations.present?
-  = render partial: 'components/search', locals: {search_url: admin_destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
+  .mt-5
+    = render partial: 'components/search', locals: {search_url: admin_destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
 
-  %table.table
+  %table.table.mt-5
     %thead.thead-default
       %tr
         %th
@@ -25,7 +24,11 @@
   = paginate @destinations
 
 - else
-  .card
-    .card-block
-      No destinations, yet.
-      = link_to 'New Destination', new_admin_destination_path, class: 'btn btn-primary'
+  .row.justify-content-center.mt-5
+    .col-md-8.col-lg-6
+      .card
+        .card-block.text-center
+          %h3 No destinations, yet.
+          = link_to new_admin_destination_path, class: 'btn btn-primary btn-lg mt-3' do
+            %i.fa.fa-plus
+            New Destination

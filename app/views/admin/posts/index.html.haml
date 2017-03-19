@@ -1,6 +1,5 @@
-%h1
-  Blog Posts
-  = link_to 'New post', new_admin_post_path, class: 'btn btn-primary'
+= render 'admin/components/page_header'
+
 - if @posts.present?
   = render partial: 'components/search', locals: {search_url: admin_posts_path, search_params: :title_cont, search_placeholder: 'Search posts...'}
   %table.table.table-striped

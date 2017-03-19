@@ -412,7 +412,7 @@ $btn-toolbar-margin:             .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:              50rem !default;
-$btn-border-radius-lg:           $border-radius-lg !default;
+$btn-border-radius-lg:           $btn-border-radius !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
 $btn-transition:                 all .2s ease-in-out !default;

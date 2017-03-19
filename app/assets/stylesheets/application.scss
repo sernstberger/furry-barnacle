@@ -157,7 +157,9 @@ b, strong {
 
 #admin-sidebar {
   .nav-link.active {
-    box-shadow: -5px 0 $gray-dark;
+    background-color: $gray-light;
+    border-radius: $border-radius;
+    // box-shadow: -5px 0 $gray-dark;
     color: $gray-dark;
   }
 }
