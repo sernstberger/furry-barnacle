@@ -1,8 +1,9 @@
 .container-fluid
-  = image_tag @attraction.destination.photos.first.image.banner, alt: @attraction.destination.name
+  - if @attraction.destination.photos.present?
+    = image_tag @attraction.destination.photos.first.image.banner, alt: @attraction.destination.name
   = link_to 'Back', destination_path(@attraction.destination)
 
 .container
-  = image_tag @attraction.destination.photos.first.image.large, alt: @attraction.destination.name
+  -# = image_tag @attraction.destination.photos.first.image.large, alt: @attraction.destination.name
   %h1= @attraction.name
-  %p= @attraction.about
+  %p= @attraction.about.html_safe

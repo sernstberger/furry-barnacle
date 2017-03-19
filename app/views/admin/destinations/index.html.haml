@@ -1,7 +1,7 @@
 = render 'admin/components/page_header'
 
 - if @destinations.present?
-  .mt-5
+  .mt-3
     = render partial: 'components/search', locals: {search_url: admin_destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
 
   %table.table.mt-5
@@ -9,7 +9,8 @@
       %tr
         %th
         %th Name
-        %th something
+        %th State
+        %th Actions
     %tbody
       - @destinations.each do |destination|
         %tr
@@ -19,7 +20,13 @@
           %td
             = link_to edit_admin_destination_path(destination.id) do
               = destination.name
-          %td= link_to 'Edit', edit_admin_destination_path(destination.id)
+          %td= destination.state
+          %td
+            = link_to edit_admin_destination_path(destination.id), class: 'btn btn-outline-secondary' do
+              %i.fa.fa-pencil
+            = link_to admin_destination_path(destination.id), class: 'btn btn-outline-secondary', method: :delete, data: { confirm: 'Are you sure?' } do
+              %i.fa.fa-trash
+
 
   = paginate @destinations
 

@@ -16,34 +16,35 @@
         .col-sm-8
           = f.input :city
         .col-sm-4
-          = f.input :state
+          = f.input :state, collection: usa_states_array
 
       %hr
 
-      - if @destination.photos.present?
-        - @destination.photos.each do |photo|
-          = image_tag photo.image.thumb, data: {image_id: photo.id}
-
-      %br
-      %br
-      %button.btn.btn-primary{'data-target' => '#destinationImageModal', 'data-toggle' => 'modal', :type => 'button'}
-        Add images
-      %br
-      %br
-      %br
+      .row
+        - if @destination.photos.present?
+          - @destination.photos.each do |photo|
+            .col-sm-4.col-lg-2
+              = image_tag photo.image.medium, data: {image_id: photo.id}, class: 'img-fluid'
+        .col-sm-4.col-lg-2
+          .card
+            .card-block
+              %button.btn.btn-primary{'data-target' => '#destinationImageModal', 'data-toggle' => 'modal', :type => 'button'}
+                Add images
 
 
 
 
       #destinationImageModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'destinationImageModalLabel', role: 'dialog', tabindex: '-1'}
-        .modal-dialog{role: 'document'}
+        .modal-dialog.modal-lg{role: 'document'}
           .modal-content
             .modal-header
               %h5#destinationImageModalLabel.modal-title Modal title
               %button.close{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'}
                 %span{'aria-hidden' => 'true'} &times;
             .modal-body
-              = f.association :photos, as: :check_boxes
+              = Photo.all
+              = f.association :photos, as: :check_boxes, label: false, label_method: lambda { |photo| "#{image_tag photo.image.medium}".html_safe }
+              -# <%= f.association :item, :as => :check_boxes, :collection => current_user.items, :label => false, :label_method => lambda { |item| "#{item.city.capitalize},<br> #{item.address}".html_safe }%>
             .modal-footer
               %button.btn.btn-secondary{'data-dismiss' => 'modal', type: 'button'} Close
               %button.btn.btn-primary{type: 'button'} Save changes

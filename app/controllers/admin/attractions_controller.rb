@@ -27,11 +27,9 @@ class Admin::AttractionsController < Admin::BaseController
 
     respond_to do |format|
       if @attraction.save
-        format.html { redirect_to @attraction, notice: 'Attraction was successfully created.' }
-        format.json { render :show, status: :created, location: @attraction }
+        redirect_to edit_admin_attraction_path(@attraction.id), notice: 'Attraction was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @attraction.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
