@@ -86,4 +86,4 @@ document.addEventListener("trix-initialize", function(event) {
   for (var element of event.target.toolbarElement.querySelectorAll("button")) {
     element.tabIndex = -1
   }
-})
+});
