@@ -4,7 +4,6 @@
     .col-sm-12
       = f.input :name, label: false, input_html: {class: 'form-control-lg'}
 
-
       %h6
         = request.base_url + '/destination/'
         %span.d-inline-block= f.input :slug, label: false, input_html: {class: 'form-control-sm', tabindex: '-1'}, wrapper_html: {class: 'mb-0'}
@@ -28,26 +27,13 @@
         .col-sm-4.col-lg-2
           .card
             .card-block
-              %button.btn.btn-primary{'data-target' => '#destinationImageModal', 'data-toggle' => 'modal', :type => 'button'}
+              %button.btn.btn-primary{'data-target' => '#imageModal', 'data-toggle' => 'modal', :type => 'button'}
                 Add images
 
+      // Photos modal
+      = render 'admin/components/photos_modal', f: f
 
-
-
-      #destinationImageModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'destinationImageModalLabel', role: 'dialog', tabindex: '-1'}
-        .modal-dialog.modal-lg{role: 'document'}
-          .modal-content
-            .modal-header
-              %h5#destinationImageModalLabel.modal-title Modal title
-              %button.close{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'}
-                %span{'aria-hidden' => 'true'} &times;
-            .modal-body
-              #photo-checkboxes
-                = f.association :photos, as: :check_boxes, wrapper_html: {class: 'row'}, item_wrapper_class: 'col-sm-3', label: false, label_method: lambda { |photo| "<div class='photo-wrapper'>#{image_tag photo.image.medium, class: 'img-fluid'}</div>".html_safe }
-            .modal-footer
-              %button.btn.btn-secondary{'data-dismiss' => 'modal', type: 'button'} Select images
-
-
+      %hr
 
       = f.trix_editor :about, class: 'form-control'
 
@@ -65,4 +51,5 @@
 
       %hr
 
-      = f.button :submit, class: 'btn-primary'
+      .text-center.fixed-bottom.mb-5
+        = f.button :submit, class: 'btn btn-primary btn-lg'

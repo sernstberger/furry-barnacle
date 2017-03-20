@@ -316,7 +316,7 @@ $nested-kbd-font-weight: $font-weight-bold !default;
 
 $list-inline-padding: 5px !default;
 
-$shadow: 0 10px 25px rgba($black, .15) !default;
+$shadow: 0 2px 3px rgba($black, .2), 0 10px 25px rgba($black, .15) !default;
 
 
 // Components
@@ -372,8 +372,8 @@ $btn-padding-y:                  .5rem !default;
 $btn-line-height:                1.25 !default;
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
-$btn-focus-box-shadow:           0 0 0 2px rgba($brand-primary, .25) !default;
-$btn-active-box-shadow:          inset 0 3px 5px rgba($black,.125) !default;
+$btn-focus-box-shadow:           $shadow !important !default;
+$btn-active-box-shadow:          inset 0 3px 5px rgba($black,.5) !default;
 
 $btn-primary-color:              $white !default;
 $btn-primary-bg:                 $brand-primary !default;

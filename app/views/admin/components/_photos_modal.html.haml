@@ -1,0 +1,12 @@
+#imageModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'imageModalLabel', role: 'dialog', tabindex: '-1'}
+  .modal-dialog.modal-lg{role: 'document'}
+    .modal-content
+      .modal-header
+        %h5#imageModalLabel.modal-title Select images
+        %button.close{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'}
+          %span{'aria-hidden' => 'true'} &times;
+      .modal-body
+        #photo-checkboxes
+          = f.association :photos, as: :check_boxes, wrapper_html: {class: 'row'}, item_wrapper_class: 'col-sm-3', label: false, label_method: lambda { |photo| "<div class='photo-wrapper'>#{image_tag photo.image.medium, class: 'img-fluid'}</div>".html_safe }
+      .modal-footer
+        %button.btn.btn-secondary{'data-dismiss' => 'modal', type: 'button'} Select images
