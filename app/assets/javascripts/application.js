@@ -82,8 +82,8 @@ $(document).on('change', '#destination_name', function() {
 });
 
 // Take the tab index off of the trix editor buttons
-document.addEventListener("trix-initialize", function(event) {
-  for (var element of event.target.toolbarElement.querySelectorAll("button")) {
-    element.tabIndex = -1
-  }
-});
+// document.addEventListener("trix-initialize", function(event) {
+//   for (var element of event.target.toolbarElement.querySelectorAll("button")) {
+//     element.tabIndex = -1
+//   }
+// });
