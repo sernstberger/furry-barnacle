@@ -257,13 +257,14 @@ $sidebar-width: 200px;
     }
   }
 
-  .nav-link.active {
-    background-color: $gray-light;
-    border-radius: $border-radius;
-    // box-shadow: -5px 0 $gray-dark;
+  .nav-link {
     color: $gray-dark;
+    &.active {
+      background-color: $gray-light;
+      border-radius: $border-radius;
+      // box-shadow: -5px 0 $gray-dark;
+    }
   }
-
 }
 
 #main {
