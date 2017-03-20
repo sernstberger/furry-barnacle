@@ -20,7 +20,11 @@ html {
 
 body {
   // font-weight: 300;
-  padding-top: 3.5rem;
+  padding-top: 7rem;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 3.5rem;
+  }
 }
 
 b, strong {
@@ -168,14 +172,7 @@ trix-editor {
 }
 
 
-#admin-sidebar {
-  .nav-link.active {
-    background-color: $gray-light;
-    border-radius: $border-radius;
-    // box-shadow: -5px 0 $gray-dark;
-    color: $gray-dark;
-  }
-}
+
 
 // div:hover > ul {
 //   visibility: visible;
@@ -211,3 +208,66 @@ trix-editor {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+$sidebar-width: 200px;
+
+
+#admin-sidebar {
+  background-color: $gray;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 47px;
+  z-index: $zindex-navbar;
+
+  @include media-breakpoint-up(md) {
+    bottom: 0;
+    right: auto;
+    top: 63px;
+    width: $sidebar-width;
+  }
+
+  #sidebar-container {
+    height: 50px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      height: 100%;
+      overflow-x: none;
+      overflow-y: scroll;
+      white-space: normal;
+    }
+  }
+
+  .nav {
+    @include media-breakpoint-up(md) {
+      flex-direction: column;
+    }
+  }
+
+  .nav-link.active {
+    background-color: $gray-light;
+    border-radius: $border-radius;
+    // box-shadow: -5px 0 $gray-dark;
+    color: $gray-dark;
+  }
+
+}
+
+#main {
+  @include media-breakpoint-up(md) {
+    padding-left: $sidebar-width;
+  }
+}
