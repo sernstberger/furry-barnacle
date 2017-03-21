@@ -1,5 +1,14 @@
 = render 'admin/components/page_header'
 
+= simple_form_for Photo.new, url: admin_photos_path do |f|
+  = f.error_notification
+  .row
+    .col-sm-12
+      -# = f.file_field :image, multiple: true
+      = f.input :image, as: :file, :multiple => true, name: "photo[image]"
+
+
+
 .row
   .col-6.col-md-4.col-xl-3
     = link_to new_admin_photo_path, class: 'card' do

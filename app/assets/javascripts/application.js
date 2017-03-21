@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery-fileupload/basic
 //= require turbolinks
 //= require tether
 //= require bootstrap-sprockets
@@ -68,6 +69,10 @@ $(document).on('turbolinks:load', function() {
            }
        }
   });
+
+
+  $('#new_photo').fileupload();
+
 });
 
 
