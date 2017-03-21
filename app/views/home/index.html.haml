@@ -1,6 +1,6 @@
 .jumbotron.jumbotron-fluid.bg-inverse
   .container
-    %h1.font-weight-bold.text-center
+    %h1.text-center
       %span.text-primary Bestination
       %span.text-white helps you plan your trip.
 
@@ -17,7 +17,7 @@
       .col-xl-10.offset-xl-1.col-xxl-8.offset-xxl-2
         .row
           .col.d-flex.justify-content-between.align-items-center
-            %h1.font-weight-bold Top Destinations
+            %h1 Top Destinations
             = link_to 'See all destinations', destinations_path
         .row
           - @popular_destinations.each do |destination|

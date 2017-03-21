@@ -22,10 +22,10 @@
       .row
         - if @destination.photos.present?
           - @destination.photos.each do |photo|
-            .col-sm-4.col-lg-2
-              = image_tag photo.image.medium, data: {image_id: photo.id}, class: 'img-fluid'
+            .col-6.col-sm-4.col-lg-2.mt-3
+              = image_tag photo.image.small, data: {image_id: photo.id}, class: 'img-fluid'
         .col-sm-4.col-lg-2
-          .card
+          .card.mt-3
             .card-block
               %button.btn.btn-primary{'data-target' => '#imageModal', 'data-toggle' => 'modal', :type => 'button'}
                 Add images
