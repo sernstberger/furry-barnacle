@@ -8,7 +8,7 @@
       = f.input :image, as: :file, multiple: true, name: "photo[image]", label: false
 
 %script#template-upload{:type => "text/x-tmpl"}
-  :cdata
+  :plain
     <div class="upload">
     {%=o.name%}
     <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
