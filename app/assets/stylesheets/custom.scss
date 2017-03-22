@@ -104,6 +104,18 @@ $pink:   #ff5b77 !default;
 $purple: #613d7c !default;
 
 // Create grayscale
+$gray-50:  #FAFAFA !default;
+$gray-100: #F5F5F5 !default;
+$gray-200: #EEEEEE !default;
+$gray-300: #E0E0E0 !default;
+$gray-400: #BDBDBD !default;
+$gray-500: #9E9E9E !default;
+$gray-600: #757575 !default;
+$gray-700: #616161 !default;
+$gray-800: #424242 !default;
+$gray-900: #212121 !default;
+
+
 $gray-dark:                 #292b2c !default;
 $gray:                      #a1a8bd !default;
 $gray-light:                #b9bed1 !default;
@@ -181,9 +193,9 @@ $sizes: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:       $gray-lighter !default;
-$body-color:    $gray-dark !default;
-$inverse-bg:    $gray-dark !default;
+$body-bg:       $gray-100 !default;
+$body-color:    $gray-800 !default;
+$inverse-bg:    $gray-800 !default;
 $inverse-color: $gray-lighter !default;
 
 
@@ -247,7 +259,7 @@ $grid-gutter-widths: (
 //
 // Font, line-height, and color for body text, headings, and more.
 
-@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,700,700i|Montserrat:300,300i,500,500i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,700,700i|Montserrat:400,400i,500,500i,900,900i');
 
 $font-family-sans-serif: 'Montserrat', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $font-family-serif:      'Crimson Text', Georgia, "Times New Roman", Times, serif !default;
@@ -259,7 +271,7 @@ $font-size-lg:   1.25rem !default;
 $font-size-sm:   .875rem !default;
 $font-size-xs:   .75rem !default;
 
-$font-weight-normal: 300 !default;
+$font-weight-normal: 400 !default;
 $font-weight-bold: 500 !default;
 $font-weight-black: 900 !default;
 
@@ -356,7 +368,7 @@ $table-bg-accent:               rgba($gray,.075) !default;
 $table-bg-hover:                rgba($black,.075) !default;
 $table-bg-active:               $table-bg-hover !default;
 
-$table-head-bg:                 $gray-lighter !default;
+$table-head-bg:                 $gray-light !default;
 $table-head-color:              $gray-dark !default;
 
 $table-border-width:            $border-width !default;
@@ -424,11 +436,11 @@ $input-padding-x:                .75rem !default;
 $input-padding-y:                .5rem !default;
 $input-line-height:              1.25 !default;
 
-$input-bg:                       $gray-lightest !default;
+$input-bg:                       $gray-50 !default;
 $input-bg-disabled:              $gray-lighter !default;
 
 $input-color:                    $gray-dark !default;
-$input-border-color:             $gray-light !default;
+$input-border-color:             $gray-400 !default;
 $input-btn-border-width:         $border-width !default; // For form controls and buttons
 $input-box-shadow:               none !default;
 

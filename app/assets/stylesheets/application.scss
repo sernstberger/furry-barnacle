@@ -229,7 +229,7 @@ $sidebar-width: 200px;
 
 
 #admin-sidebar {
-  background-color: $gray;
+  background-color: $brand-primary;
   left: 0;
   position: fixed;
   right: 0;
@@ -264,10 +264,13 @@ $sidebar-width: 200px;
   }
 
   .nav-link {
-    color: $gray-dark;
+    color: $white;
+    font-size: .9rem;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
     &.active {
-      background-color: $gray-light;
-      border-radius: $border-radius;
+      background-color: darken($brand-primary, 7.5%);
+      // border-radius: $border-radius;
       // box-shadow: -5px 0 $gray-dark;
     }
   }

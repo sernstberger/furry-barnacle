@@ -4,7 +4,7 @@
       - if destination.photos.present?
         = image_tag destination.photos.first.image.large, class: 'img-fluid card-img-top'
     .card-block
-      %h2.card-title.font-weight-bold.mb-1= link_to destination.name, destination
+      %h2.card-title.mb-1= link_to destination.name, destination
       %h5.font-italic.text-muted.mb-4 #{destination.city + ',' if destination.city.present?} #{destination.state}
 
       - if destination.excerpt.present?

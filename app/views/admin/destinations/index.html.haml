@@ -4,7 +4,7 @@
   .mt-3
     = render partial: 'components/search', locals: {search_url: admin_destinations_path, search_params: :name_cont, search_placeholder: 'Search destinations...'}
 
-  %table.table.mt-5
+  %table.table.table-striped.mt-5
     %thead.thead-default
       %tr
         %th
