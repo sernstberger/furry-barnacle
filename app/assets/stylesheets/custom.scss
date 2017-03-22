@@ -99,7 +99,7 @@ $orange: #f0ad4e !default;
 $yellow: #ffd500 !default;
 $green:  #5cb85c !default;
 $blue:   #0275d8 !default;
-$teal:   #00ACC1 !default;
+$teal:   #009aad !default;
 $pink:   #ff5b77 !default;
 $purple: #613d7c !default;
 
@@ -364,15 +364,15 @@ $table-bg:                      transparent !default;
 $table-inverse-bg:              $gray-dark !default;
 $table-inverse-color:           $body-bg !default;
 
-$table-bg-accent:               rgba($gray,.075) !default;
+$table-bg-accent:               $gray-200 !default;
 $table-bg-hover:                rgba($black,.075) !default;
 $table-bg-active:               $table-bg-hover !default;
 
-$table-head-bg:                 $gray-light !default;
-$table-head-color:              $gray-dark !default;
+$table-head-bg:                 $gray-300 !default;
+$table-head-color:              $gray-800 !default;
 
 $table-border-width:            $border-width !default;
-$table-border-color:            $gray-light !default;
+$table-border-color:            $gray-400 !default;
 
 
 // Buttons
