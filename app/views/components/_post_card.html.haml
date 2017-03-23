@@ -1,8 +1,8 @@
 .card
   = link_to post, class: 'position-relative' do
     -# - if post.photos.present?
-    -#   = image_tag post.photos.first.image.large, class: 'img-fluid card-img-top'
-    = image_tag 'http://lorempixel.com/600/400', class: 'img-fluid card-img-top'
+    -#   = cl_image_tag post.photos.first.image.large, class: 'img-fluid card-img-top'
+    = cl_image_tag 'http://lorempixel.com/600/400', class: 'img-fluid card-img-top'
     .card-img-overlay.d-flex.align-items-end
       -# .badge.badge-default National Park
       -# %p.mb-0

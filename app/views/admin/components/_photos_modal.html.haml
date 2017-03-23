@@ -7,6 +7,6 @@
           %span{'aria-hidden' => 'true'} &times;
       .modal-body
         #photo-checkboxes
-          = f.association :photos, as: :check_boxes, wrapper_html: {class: 'row'}, item_wrapper_class: 'col-sm-3', label: false, label_method: lambda { |photo| "<div class='photo-wrapper'>#{image_tag photo.image.medium, class: 'img-fluid'}</div>".html_safe }
+          = f.association :photos, as: :check_boxes, wrapper_html: {class: 'row'}, item_wrapper_class: 'col-sm-3', label: false, label_method: lambda { |photo| "<div class='photo-wrapper'>#{cl_image_tag photo.image.medium, class: 'img-fluid'}</div>".html_safe }
       .modal-footer
         %button.btn.btn-secondary{'data-dismiss' => 'modal', type: 'button'} Select images

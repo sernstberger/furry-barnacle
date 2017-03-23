@@ -36,7 +36,7 @@
 
     #admin-sidebar
       #sidebar-container
-        %nav.nav
+        %nav.nav.mt-5
           = link_to 'Dashboard', admin_root_path, class: 'nav-link'
           = active_link_to 'Destinations', admin_destinations_path, class: 'nav-link'
           = active_link_to 'Attractions', admin_attractions_path, class: 'nav-link'
@@ -47,9 +47,9 @@
           = active_link_to 'Planners', admin_planners_path, class: 'nav-link'
 
     #main
+      = render 'components/flash_messages'
       .container-fluid
         .row
           .col-xl-10.offset-xl-1
-            = render 'components/flash_messages'
             .py-4
               = yield

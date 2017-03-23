@@ -8,7 +8,7 @@
               .row
                 .col-sm-6
                   = link_to attraction do
-                    = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
+                    = cl_image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
                 .col-sm-6.card-block
                   %h3= link_to attraction.name, attraction
                   - if attraction.excerpt.present?

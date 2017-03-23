@@ -9,7 +9,7 @@
                 .row
                   .col-sm-6
                     = link_to post do
-                      = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
+                      = cl_image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
                   .col-sm-6.card-block
                     %h3= link_to post.title, post
                     %p= post.publish_date

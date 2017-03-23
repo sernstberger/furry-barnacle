@@ -23,7 +23,7 @@
         - if @destination.photos.present?
           - @destination.photos.each do |photo|
             .col-6.col-sm-4.col-lg-2.mt-3
-              = image_tag photo.image.small, data: {image_id: photo.id}, class: 'img-fluid'
+              = cl_image_tag photo.image.small, data: {image_id: photo.id}, class: 'img-fluid'
         .col-sm-4.col-lg-2
           .card.mt-3
             .card-block

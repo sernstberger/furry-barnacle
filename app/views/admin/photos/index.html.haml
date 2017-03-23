@@ -4,7 +4,8 @@
   = f.error_notification
   .row
     .col-sm-12
-      -# = f.file_field :image, multiple: true
+      = f.hidden_field :image_cache
+      -# = f.file_field :image
       = f.input :image, as: :file, multiple: true, name: "photo[image]", label: false
 
 %script#template-upload{:type => "text/x-tmpl"}
@@ -25,7 +26,7 @@
       .col-6.col-md-4.col-xl-3
         .card
           = link_to edit_admin_photo_path(photo) do
-            = image_tag photo.image.small, class: 'img-fluid card-img-top'
+            = cl_image_tag photo.image.small, class: 'img-fluid card-img-top'
           .card-footer.d-flex.justify-content-end
             .mr-auto= photo.name
             = link_to [:admin, photo], method: :delete, data: { confirm: 'Are you sure?' } do

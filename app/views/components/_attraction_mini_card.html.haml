@@ -1,7 +1,7 @@
 .card{id: "stop_#{stop.id}"}
   .card-block.p-0
     .media
-      = image_tag 'http://lorempixel.com/120/80', class: 'd-flex mr-3 align-self-center rounded-left'
+      = cl_image_tag 'http://lorempixel.com/120/80', class: 'd-flex mr-3 align-self-center rounded-left'
       .media-body.align-self-center
         %h4.mb-1= stop.attraction.name
         .small.text-muted 2 hours

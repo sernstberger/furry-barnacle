@@ -12,7 +12,7 @@
     %tbody
       - @attractions.each do |attraction|
         %tr
-          %td= image_tag 'http://lorempixel.com/60/40', class: 'img-fluid'
+          %td= cl_image_tag 'http://lorempixel.com/60/40', class: 'img-fluid'
           %td= link_to attraction.name, edit_admin_attraction_path(attraction.id)
           %td= attraction.destination.name
           %td

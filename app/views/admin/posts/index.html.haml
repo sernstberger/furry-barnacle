@@ -14,7 +14,7 @@
     %tbody
       - @posts.each do |post|
         %tr
-          %td= image_tag 'http://lorempixel.com/60/40', class: 'img-fluid'
+          %td= cl_image_tag 'http://lorempixel.com/60/40', class: 'img-fluid'
           %td= link_to post.title, edit_admin_post_path(post.id)
           %td= formatted_date post.publish_date
           %td
@@ -43,7 +43,7 @@
 -#                 .row
 -#                   .col-sm-6
 -#                     = link_to post do
--#                       = image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
+-#                       = cl_image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
 -#                   .col-sm-6.card-block
 -#                     %h3= link_to post.title, post
 -#                     %p= post.publish_date

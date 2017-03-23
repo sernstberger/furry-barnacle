@@ -10,7 +10,7 @@
       .carousel-inner{:role => "listbox"}
         - @destination.photos.each do |dp|
           .carousel-item
-            = image_tag dp.image.jumbo, class: 'img-fluid'
+            = cl_image_tag dp.image.jumbo, class: 'img-fluid'
             .carousel-caption.d-none.d-md-block
               %h3= dp.name
               %p= dp.description
@@ -25,7 +25,7 @@
 
 
   - elsif @destination.photos.count == 1
-    = image_tag @destination.photos.first.image.jumbo, class: 'img-fluid'
+    = cl_image_tag @destination.photos.first.image.jumbo, class: 'img-fluid'
 
 .container
   .row
