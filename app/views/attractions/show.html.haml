@@ -1,6 +1,6 @@
 .container-fluid
   - if @attraction.destination.photos.present?
-    = cl_image_tag @attraction.destination.photos.first.image.banner, alt: @attraction.destination.name
+    = cl_image_tag @attraction.destination.photos.first.image.banner, effect: 'blur:1000', alt: @attraction.destination.name
   = link_to 'Back', destination_path(@attraction.destination)
 
 .container

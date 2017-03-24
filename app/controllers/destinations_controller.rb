@@ -13,7 +13,9 @@ class DestinationsController < ApplicationController
       redirect_to @destination, status: :moved_permanently
     end
 
-    @attractions = Attraction.where(destination_id: @destination.id)
+    @destinations_in_state = Destination.where(state: @destination.state).where.not(id: @destination.id).limit(5)
+
+    @attractions = Attraction.where(destination_id: @destination.id).order('name ASC').limit(5)
   end
 
   def new

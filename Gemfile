@@ -46,6 +46,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 gem 'jquery-fileupload-rails'
+gem 'faker'
 
 
 group :development, :test do

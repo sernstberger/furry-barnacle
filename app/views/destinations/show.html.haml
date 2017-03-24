@@ -1,53 +1,72 @@
--# = link_to 'Back', destinations_path
+.jumbotron{style: "background-image: url(#{cl_image_path @destination.photos.first.image.jumbo})"}
+  %h1.display-1= @destination.name
+  %h2.display-4
+    = @destination.city unless @destination.name == @destination.city
+    %em= @destination.state
 
-.blah
   - if @destination.photos.count > 1
-    #carouselExampleSlidesOnly.carousel.slide{"data-ride" => "carousel"}
-      %ol.carousel-indicators
-        - @destination.photos.each_with_index do |dp, index|
-          %li{"data-slide-to" => index, "data-target" => "#carouselExampleSlidesOnly"}
+    %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+      Launch demo modal
+    / Modal
+    #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog{:role => "document"}
+        .modal-content
+          .modal-header
+            %h5#exampleModalLabel.modal-title Modal title
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} &times;
+          .modal-body
+            #carouselExampleSlidesOnly.carousel.slide{"data-ride" => "carousel"}
+              %ol.carousel-indicators
+                - @destination.photos.each_with_index do |dp, index|
+                  %li{"data-slide-to" => index, "data-target" => "#carouselExampleSlidesOnly"}
 
-      .carousel-inner{:role => "listbox"}
-        - @destination.photos.each do |dp|
-          .carousel-item
-            = cl_image_tag dp.image.jumbo, class: 'img-fluid'
-            .carousel-caption.d-none.d-md-block
-              %h3= dp.name
-              %p= dp.description
+              .carousel-inner{:role => "listbox"}
+                - @destination.photos.each do |dp|
+                  .carousel-item
+                    = cl_image_tag dp.image.jumbo, class: 'img-fluid'
+                    .carousel-caption.d-none.d-md-block
+                      %h3= dp.name
+                      %p= dp.description
 
-      %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleSlidesOnly", :role => "button"}
-        %span.carousel-control-prev-icon{"aria-hidden" => "true"}
-        %span.sr-only Previous
-      %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleSlidesOnly", :role => "button"}
-        %span.carousel-control-next-icon{"aria-hidden" => "true"}
-        %span.sr-only Next
+              %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleSlidesOnly", :role => "button"}
+                %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+                %span.sr-only Previous
+              %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleSlidesOnly", :role => "button"}
+                %span.carousel-control-next-icon{"aria-hidden" => "true"}
+                %span.sr-only Next
+          .modal-footer
+            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+            %button.btn.btn-primary{:type => "button"} Save changes
 
 
 
-  - elsif @destination.photos.count == 1
-    = cl_image_tag @destination.photos.first.image.jumbo, class: 'img-fluid'
+
+
+
+  
+
+
+
 
 .container
   .row
     .col-sm-12
-      %nav.nav
-        %a.nav-link.active{:href => "#"} About
-        %a.nav-link{:href => "#"} Attractions
-        %a.nav-link{:href => "#"} Reviews
+      = link_to 'button', '#', class: 'btn btn-primary sticky-top', style: 'top: 50px;'
+      / %a.nav-link.active{:href => "#about"} About
+      / %a.nav-link{:href => "#attractions"} Attractions
+      / %a.nav-link{:href => "#reviews"} Reviews
+      / %a.nav-link{:href => "#guides"} Guides
 
     .col-sm-8
-      %h1= @destination.name
+      %h2#about About
       .font-serif.longform
         = @destination.about.html_safe
 
-    .col-sm-4
-      // Make sure to take out data-ad-test for prod!
-      -# %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
-      -#   / Testing
-      -#   %ins.adsbygoogle{"data-ad-test" => "on", "data-ad-client" => "ca-pub-1968386566745891", "data-ad-format" => "auto", "data-ad-slot" => "6955528863", :style => "display:block"}
-      -#   :javascript
-      -#     (adsbygoogle = window.adsbygoogle || []).push({});
 
+
+
+      %h2#attractions Attractions
       .card
         %h5.card-header Things to do
         .list-group.list-group-flush
@@ -56,5 +75,32 @@
               = attraction.name
         .card-footer
           = link_to 'show all', '#'
+
+
+
+      - if @destinations_in_state.present?
+        %h2#other Other destinations in #{@destination.state}
+        - @destinations_in_state.each do |ds|
+          .card
+            .card-block
+              %h3= ds.name
+              = ds.inspect
+        - if @destinations_in_state.count > 5
+          = link_to 'See all', '#', class: 'btn btn-outline-primary'
+
+      %h2#reviews Reviews
+
+      %h2#guides Guides
+
+    .col-sm-4
+      = link_to 'button', '#', class: 'btn btn-primary sticky-top', style: 'top: 50px;'
+      // Make sure to take out data-ad-test for prod!
+      -# %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+      -#   / Testing
+      -#   %ins.adsbygoogle{"data-ad-test" => "on", "data-ad-client" => "ca-pub-1968386566745891", "data-ad-format" => "auto", "data-ad-slot" => "6955528863", :style => "display:block"}
+      -#   :javascript
+      -#     (adsbygoogle = window.adsbygoogle || []).push({});
+
+      
 
   = link_to 'Edit', edit_admin_destination_path(@destination)
