@@ -1,3 +1,5 @@
+= render 'components/destination_images_modal'
+
 .jumbotron.jumbotron-fluid.jumbotron-tall.cover.d-flex.align-items-end.with-overlay.m-0{style: "background-image: url(#{cl_image_path @destination.photos.first.image.jumbo})"}
   .container
     .row
@@ -9,37 +11,8 @@
             %em #{@destination.city}, #{@destination.state}
 
         - if @destination.photos.count > 1
-          %button.btn.btn-secondary.jumbotron-btn{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+          %button.btn.btn-secondary.jumbotron-btn{"data-target" => "#destinationImagesModal", "data-toggle" => "modal", :type => "button"}
             View images
-
-#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog.modal-lg{:role => "document"}
-    .modal-content
-      .modal-header
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} &times;
-      #carouselExampleSlidesOnly.carousel.slide{data: {ride: 'carousel', interval: 'false'}}
-        %ol.carousel-indicators
-          - @destination.photos.each_with_index do |dp, index|
-            %li{"data-slide-to" => index, "data-target" => "#carouselExampleSlidesOnly"}
-
-        .carousel-inner{:role => "listbox"}
-          - @destination.photos.each do |dp|
-            .carousel-item.align-items-center
-              = cl_image_tag dp.image.jumbo, class: 'img-fluid'
-              .carousel-caption.d-none.d-md-block
-                %h3= dp.name
-                %p= dp.description
-
-        %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleSlidesOnly", :role => "button"}
-          %span.carousel-control-prev-icon{"aria-hidden" => "true"}
-          %span.sr-only Previous
-        %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleSlidesOnly", :role => "button"}
-          %span.carousel-control-next-icon{"aria-hidden" => "true"}
-          %span.sr-only Next
-
-
-
 
 
 
@@ -53,39 +26,60 @@
           = link_to 'Attractions', '#attractions', class: 'nav-link'
           = link_to 'Reviews', '#reviews', class: 'nav-link'
           = link_to 'Guides', '#guides', class: 'nav-link'
+        -# = link_to 'someting', '#', class: 'btn btn-primary'
 
 .container
   .row
-    .col-sm-8
-      %h2#about About
-      .font-serif.longform
-        = @destination.about.html_safe
+    .col-sm-12
+      %section.mt-5
+        %h2#about About
+        .font-serif.longform
+          - if @destination.about.length > 500
+            = truncate(@destination.about, length: 500, escape: false)
+            = link_to '#', class: "read-more-#{@destination.id}" do
+              %i.fa.fa-plus
+              More
+            :javascript
+              $('.read-more-#{@destination.id}').on('click', function(e) {
+                e.preventDefault()
+                $(this).parent().html('#{escape_javascript @destination.about}')
+              })
+          - else
+            = @destination.about
 
 
 
 
-      %h2#attractions Top Attractions
-      = link_to 'show all', '#'
-      = render partial: 'components/attraction_mini_card', collection: @attractions, as: :attraction
+
+
+      %section.mt-5
+        %h2#attractions Top Attractions
+        = link_to 'show all', '#'
+        .row
+          = render partial: 'components/attraction_mini_card', collection: @attractions, as: :attraction
 
 
 
-      - if @destinations_in_state.present?
-        %h2#other Other destinations in #{@destination.state}
-        - @destinations_in_state.each do |ds|
-          .card
-            .card-block
-              %h3= ds.name
-              = ds.inspect
-        - if @destinations_in_state.count > 5
-          = link_to 'See all', '#', class: 'btn btn-outline-primary'
+        - if @destinations_in_state.present?
+          %section.mt-5
+            %h2#other Other destinations in #{@destination.state}
+            - @destinations_in_state.each do |ds|
+              .card
+                .card-block
+                  %h3= ds.name
+                  = ds.inspect
+            - if @destinations_in_state.count > 12
+              = link_to 'See all', '#', class: 'btn btn-outline-primary'
 
-      %h2#reviews Reviews
 
-      %h2#guides Guides
+      %section.mt-5
+        %h2#reviews Reviews
+
+
+      %section.mt-5
+        %h2#guides Guides
 
     .col-sm-4
-      = link_to 'button', '#', class: 'btn btn-primary sticky-top', style: 'top: 50px;'
       // Make sure to take out data-ad-test for prod!
       -# %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
       -#   / Testing

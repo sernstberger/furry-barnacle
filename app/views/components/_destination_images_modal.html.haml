@@ -1,0 +1,25 @@
+#destinationImagesModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "destinationImagesLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+      #carouselExampleSlidesOnly.carousel.slide{data: {ride: 'carousel', interval: 'false'}}
+        %ol.carousel-indicators
+          - @destination.photos.each_with_index do |dp, index|
+            %li{"data-slide-to" => index, "data-target" => "#carouselExampleSlidesOnly"}
+
+        .carousel-inner{:role => "listbox"}
+          - @destination.photos.each do |dp|
+            .carousel-item.align-items-center
+              = cl_image_tag dp.image.jumbo, class: 'img-fluid'
+              .carousel-caption.d-none.d-md-block
+                %h3= dp.name
+                %p= dp.description
+
+        %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleSlidesOnly", :role => "button"}
+          %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleSlidesOnly", :role => "button"}
+          %span.carousel-control-next-icon{"aria-hidden" => "true"}
+          %span.sr-only Next
