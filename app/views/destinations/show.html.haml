@@ -1,63 +1,61 @@
-.jumbotron{style: "background-image: url(#{cl_image_path @destination.photos.first.image.jumbo})"}
-  %h1.display-1= @destination.name
-  %h2.display-4
-    = @destination.city unless @destination.name == @destination.city
-    %em= @destination.state
+.jumbotron.jumbotron-fluid.jumbotron-tall.cover.d-flex.align-items-end.with-overlay.m-0{style: "background-image: url(#{cl_image_path @destination.photos.first.image.jumbo})"}
+  .container
+    .row
+      .col.d-lg-flex.justify-content-lg-between.align-items-center
+        %div
+          %h1.display-1.jumbotron-text= @destination.name
+          %h2.jumbotron-text
+            -# = @destination.city unless @destination.name === @destination.city
+            %em #{@destination.city}, #{@destination.state}
 
-  - if @destination.photos.count > 1
-    %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
-      Launch demo modal
-    / Modal
-    #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-      .modal-dialog{:role => "document"}
-        .modal-content
-          .modal-header
-            %h5#exampleModalLabel.modal-title Modal title
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true"} &times;
-          .modal-body
-            #carouselExampleSlidesOnly.carousel.slide{"data-ride" => "carousel"}
-              %ol.carousel-indicators
-                - @destination.photos.each_with_index do |dp, index|
-                  %li{"data-slide-to" => index, "data-target" => "#carouselExampleSlidesOnly"}
+        - if @destination.photos.count > 1
+          %button.btn.btn-secondary.jumbotron-btn{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+            View images
 
-              .carousel-inner{:role => "listbox"}
-                - @destination.photos.each do |dp|
-                  .carousel-item
-                    = cl_image_tag dp.image.jumbo, class: 'img-fluid'
-                    .carousel-caption.d-none.d-md-block
-                      %h3= dp.name
-                      %p= dp.description
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+      #carouselExampleSlidesOnly.carousel.slide{data: {ride: 'carousel', interval: 'false'}}
+        %ol.carousel-indicators
+          - @destination.photos.each_with_index do |dp, index|
+            %li{"data-slide-to" => index, "data-target" => "#carouselExampleSlidesOnly"}
 
-              %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleSlidesOnly", :role => "button"}
-                %span.carousel-control-prev-icon{"aria-hidden" => "true"}
-                %span.sr-only Previous
-              %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleSlidesOnly", :role => "button"}
-                %span.carousel-control-next-icon{"aria-hidden" => "true"}
-                %span.sr-only Next
-          .modal-footer
-            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
-            %button.btn.btn-primary{:type => "button"} Save changes
+        .carousel-inner{:role => "listbox"}
+          - @destination.photos.each do |dp|
+            .carousel-item.align-items-center
+              = cl_image_tag dp.image.jumbo, class: 'img-fluid'
+              .carousel-caption.d-none.d-md-block
+                %h3= dp.name
+                %p= dp.description
 
+        %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleSlidesOnly", :role => "button"}
+          %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleSlidesOnly", :role => "button"}
+          %span.carousel-control-next-icon{"aria-hidden" => "true"}
+          %span.sr-only Next
 
 
 
 
 
-  
 
 
-
+.bg-faded.sticky-top{style: 'top: 50px;'}
+  .container
+    .row
+      .col
+        %nav.nav
+          = link_to 'About', '#about', class: 'nav-link active'
+          = link_to 'Attractions', '#attractions', class: 'nav-link'
+          = link_to 'Reviews', '#reviews', class: 'nav-link'
+          = link_to 'Guides', '#guides', class: 'nav-link'
 
 .container
   .row
-    .col-sm-12
-      = link_to 'button', '#', class: 'btn btn-primary sticky-top', style: 'top: 50px;'
-      / %a.nav-link.active{:href => "#about"} About
-      / %a.nav-link{:href => "#attractions"} Attractions
-      / %a.nav-link{:href => "#reviews"} Reviews
-      / %a.nav-link{:href => "#guides"} Guides
-
     .col-sm-8
       %h2#about About
       .font-serif.longform
@@ -66,15 +64,9 @@
 
 
 
-      %h2#attractions Attractions
-      .card
-        %h5.card-header Things to do
-        .list-group.list-group-flush
-          - @attractions.each do |attraction|
-            = link_to attraction_path(attraction), class: 'list-group-item' do
-              = attraction.name
-        .card-footer
-          = link_to 'show all', '#'
+      %h2#attractions Top Attractions
+      = link_to 'show all', '#'
+      = render partial: 'components/attraction_mini_card', collection: @attractions, as: :attraction
 
 
 
@@ -101,6 +93,6 @@
       -#   :javascript
       -#     (adsbygoogle = window.adsbygoogle || []).push({});
 
-      
+
 
   = link_to 'Edit', edit_admin_destination_path(@destination)

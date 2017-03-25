@@ -1,14 +1,13 @@
-.card{id: "stop_#{stop.id}"}
-  .card-block.p-0
-    .media
+.card
+  .media
+    = link_to attraction_path(attraction) do
       = cl_image_tag 'http://lorempixel.com/120/80', class: 'd-flex mr-3 align-self-center rounded-left'
-      .media-body.align-self-center
-        %h4.mb-1= stop.attraction.name
-        .small.text-muted 2 hours
+    .media-body.align-self-center
+      %h4= attraction.name
+      %p.small
+        5 stars
+        %span.text-muted (5 reviews)
 
-      .d-flex.align-self-center.mr-3
-        = link_to '#', class: 'btn btn-outline-secondary mr-2' do
-          %i.fa.fa-align-justify
-        = link_to 'view', attraction_path(stop.attraction), class: 'btn btn-outline-secondary mr-2'
-        = link_to '#', class: 'btn btn-outline-secondary' do
-          %i.fa.fa-times
+    .d-flex.align-self-center.mr-3
+      = link_to attraction_path(attraction), class: 'btn btn-outline-secondary mr-2' do
+        %i.fa.fa-plus
