@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  // font-weight: 300;
+  position: relative;
   padding-top: 7rem;
 
   @include media-breakpoint-up(md) {

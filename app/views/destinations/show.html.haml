@@ -21,22 +21,26 @@
   .container
     .row
       .col
-        %nav.nav
-          = link_to 'About', '#about', class: 'nav-link active'
-          = link_to 'Attractions', '#attractions', class: 'nav-link'
-          = link_to 'Reviews', '#reviews', class: 'nav-link'
-          = link_to 'Guides', '#guides', class: 'nav-link'
+        %ul.nav.nav-pills
+          %li.nav-item
+            = link_to 'About', '#about', class: 'nav-link'
+          %li.nav-item
+            = link_to 'Attractions', '#attractions', class: 'nav-link'
+          %li.nav-item
+            = link_to 'Reviews', '#reviews', class: 'nav-link'
+          %li.nav-item
+            = link_to 'Guides', '#guides', class: 'nav-link'
         -# = link_to 'someting', '#', class: 'btn btn-primary'
 
 .container
   .row
     .col-sm-12
-      %section.mt-5
-        %h2#about About
+      %section#about.mt-5
+        %h2 About
         .font-serif.longform
           - if @destination.about.length > 500
             = truncate(@destination.about, length: 500, escape: false)
-            = link_to '#', class: "read-more-#{@destination.id}" do
+            = link_to '#', class: "read-more-#{@destination.id} btn btn-outline-primary" do
               %i.fa.fa-plus
               More
             :javascript
@@ -52,8 +56,8 @@
 
 
 
-      %section.mt-5
-        %h2#attractions Top Attractions
+      %section#attractions.mt-5
+        %h2 Top Attractions
         = link_to 'show all', '#'
         .row
           = render partial: 'components/attraction_mini_card', collection: @attractions, as: :attraction
@@ -67,7 +71,7 @@
               .card
                 .card-block
                   %h3= ds.name
-                  = ds.inspect
+                  = ds.excerpt
             - if @destinations_in_state.count > 12
               = link_to 'See all', '#', class: 'btn btn-outline-primary'
 

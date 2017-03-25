@@ -12,7 +12,7 @@
     %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :integrity => "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", :rel => "stylesheet"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+  %body{data: {spy: 'scroll', target: '#destinationStickyNav', offset: '150'}}
     = render 'components/flash_messages'
 
     %nav.navbar.navbar-toggleable-md.navbar-inverse.bg-primary.fixed-top

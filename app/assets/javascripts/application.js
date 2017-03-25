@@ -114,6 +114,14 @@ $(document).on('change', '#destination_name', function() {
   }
 });
 
+$(document).on('click', '#destinationStickyNav a', function(event){
+    event.preventDefault();
+
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+});
+
 // Take the tab index off of the trix editor buttons
 // document.addEventListener("trix-initialize", function(event) {
 //   for (var element of event.target.toolbarElement.querySelectorAll("button")) {

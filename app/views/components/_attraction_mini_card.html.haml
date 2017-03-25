@@ -1,15 +1,14 @@
 .col-6.col-lg-4
   .card.mt-3
-    .media
-      = link_to attraction_path(attraction) do
-        = cl_image_tag 'http://lorempixel.com/120/80', class: 'd-flex mr-3 align-self-center rounded-left'
-      .media-body.align-self-center
-        %h4= link_to attraction.name, attraction_path(attraction)
-        %p.small
-          5 stars
-          %span.text-muted (5 reviews)
-        = link_to attraction_path(attraction), class: 'btn btn-outline-secondary mr-2' do
-          %i.fa.fa-plus
+    = link_to attraction_path(attraction) do
+      = cl_image_tag 'http://lorempixel.com/400/200', class: 'img-fluid d-flex mr-3 align-self-center'
+    .card-block
+      %h4= link_to attraction.name, attraction_path(attraction)
+      %p.small
+        5 stars
+        %span.text-muted (5 reviews)
+      = link_to attraction_path(attraction), class: 'btn btn-outline-secondary mr-2' do
+        %i.fa.fa-plus
 
 
       -# .d-flex.align-self-center.mr-3
