@@ -1,0 +1,4 @@
+$('.read-more-#{@destination.id}').on('click', function(e) {
+  e.preventDefault();
+  $(this).parent().html('#{escape_javascript @destination.about}');
+})

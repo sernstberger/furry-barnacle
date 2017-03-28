@@ -1,6 +1,5 @@
-.container-fluid
-  %h1 Planners
-  .row
+.row
+  .col
     - if @planners.present?
       %table.table.table-striped
         %thead.thead-default
@@ -23,5 +22,3 @@
 
     - else
       Add some planners!
-
--# = link_to 'New Planner', new_admin_planner_path

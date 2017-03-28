@@ -1,11 +1,19 @@
 - sectionName = controller_name.classify
 
 .row
-  .col-sm-8
-    %h1.m-0= sectionName.pluralize
-  .col-sm-4.align-self-center.justify-content-end.d-flex
-    = link_to eval("new_admin_#{sectionName.downcase}_path"), class: 'btn btn-primary' do
-      %i.fa.fa-plus
-      New
-      = sectionName
--# %hr
+  .col.d-flex.justify-content-between.align-items-center
+    %h1.m-0
+      - if action_name === 'index'
+        = sectionName.pluralize
+      - elsif action_name === 'new'
+        New #{sectionName}
+      - elsif action_name === 'edit'
+        Editing #{sectionName}
+      - else
+        poo
+
+    - if action_name === 'index' && controller_name != 'dashboard'
+      = link_to eval("new_admin_#{sectionName.downcase}_path"), class: 'btn btn-primary' do
+        %i.fa.fa-plus
+        New
+        = sectionName

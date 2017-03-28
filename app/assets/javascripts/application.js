@@ -118,7 +118,7 @@ $(document).on('click', '#destinationStickyNav a', function(event){
     event.preventDefault();
 
     $('html, body').animate({
-        scrollTop: $( $.attr(this, 'href') ).offset().top
+        scrollTop: $( $.attr(this, 'href') ).offset().top - 150
     }, 500);
 });
 

@@ -1,26 +1,23 @@
 .row
   .col-xl-10.offset-xl-1
     .row
+      = @q.inspect
+      -# %p search page!
       - if @attractions.present?
-        - @attractions.each do |attraction|
-          .col-lg-6
-            .card
-              .row
-                .col-sm-6
-                  = link_to attraction do
-                    = cl_image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
-                .col-sm-6.card-block
-                  %h3= link_to attraction.name, attraction
-                  - if attraction.excerpt.present?
-                    = attraction.excerpt
-                  - else
-                    = attraction.about.truncate(100)
-                  = link_to 'Read more', attraction, class: 'btn btn-secondary'
+        = render partial: 'components/attraction_mini_card', collection: @attractions, as: :attraction
+        -# - @attractions.each do |attraction|
+        -#   .col-lg-6
+        -#     .card
+        -#       .row
+        -#         .col-sm-6
+        -#           = link_to attraction do
+        -#             = cl_image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
+        -#         .col-sm-6.card-block
+        -#           %h3= link_to attraction.name, attraction
+        -#           - if attraction.excerpt.present?
+        -#             = attraction.excerpt
+        -#           - else
+        -#             = attraction.about.truncate(100)
+        -#           = link_to 'Read more', attraction, class: 'btn btn-secondary'
       - else
         Add some attractions!
-
-%br
-%br
-%br
-%br
-= link_to 'New Attraction', new_attraction_path

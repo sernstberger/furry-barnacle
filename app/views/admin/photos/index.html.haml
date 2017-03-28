@@ -1,11 +1,8 @@
-= render 'admin/components/page_header'
-
 = simple_form_for Photo.new, url: admin_photos_path do |f|
   = f.error_notification
   .row
     .col-sm-12
       = f.hidden_field :image_cache
-      -# = f.file_field :image
       = f.input :image, as: :file, multiple: true, name: "photo[image]", label: false
 
 %script#template-upload{:type => "text/x-tmpl"}

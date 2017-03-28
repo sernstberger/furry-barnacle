@@ -1,8 +1,8 @@
 ---
 development:
   cloud_name: djlkydc4n
-  api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
-  api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
+  api_key: 388899539848838
+  api_secret: cdprSokI__-alKepSZgujOCJK-Y
   enhance_image_tag: true
   static_image_support: false
 production:

@@ -2,7 +2,8 @@ class AttractionsController < ApplicationController
   before_action :set_attraction, only: [:show, :edit, :update, :destroy]
 
   def index
-    @attractions = Attraction.all
+    @q = Attraction.ransack(params[:q])
+    @attractions = @q.result.page(params[:page])
   end
 
   def show

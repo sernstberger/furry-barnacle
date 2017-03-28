@@ -1,5 +1,3 @@
-= render 'admin/components/page_header'
-
 - if @attractions.present?
   = render partial: 'components/search', locals: {search_url: admin_attractions_path, search_params: :name_cont, search_placeholder: 'Search attractions...'}
   %table.table

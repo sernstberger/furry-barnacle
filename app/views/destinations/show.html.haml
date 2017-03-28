@@ -58,7 +58,10 @@
 
       %section#attractions.mt-5
         %h2 Top Attractions
-        = link_to 'show all', '#'
+        = link_to 'show all', attractions_path(q: {destination_id_eq: @destination.id})
+        %li parks
+        %li restaurants
+        %li something
         .row
           = render partial: 'components/attraction_mini_card', collection: @attractions, as: :attraction
 
@@ -67,11 +70,13 @@
         - if @destinations_in_state.present?
           %section.mt-5
             %h2#other Other destinations in #{@destination.state}
-            - @destinations_in_state.each do |ds|
-              .card
-                .card-block
-                  %h3= ds.name
-                  = ds.excerpt
+
+            .row
+              - @destinations_in_state.each do |destination|
+                = render partial: 'components/destination_card', locals: {destination: destination}
+
+
+
             - if @destinations_in_state.count > 12
               = link_to 'See all', '#', class: 'btn btn-outline-primary'
 

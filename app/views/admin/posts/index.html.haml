@@ -1,5 +1,3 @@
-= render 'admin/components/page_header'
-
 - if @posts.present?
   = render partial: 'components/search', locals: {search_url: admin_posts_path, search_params: :title_cont, search_placeholder: 'Search posts...'}
   %table.table.table-striped
@@ -27,39 +25,3 @@
   = paginate @posts
 - else
   Add some blog posts!
-
-
-
-
-
--# .row
--#   .col-xl-10.offset-xl-1
--#     .row
--#       - if @posts.present?
--#         - @posts.each_with_index do |post, index|
--#           - if index < 2
--#             .col-lg-6
--#               .card
--#                 .row
--#                   .col-sm-6
--#                     = link_to post do
--#                       = cl_image_tag 'http://lorempixel.com/400/400', class: 'img-fluid'
--#                   .col-sm-6.card-block
--#                     %h3= link_to post.title, post
--#                     %p= post.publish_date
--#                     - if post.excerpt.present?
--#                       = post.excerpt
--#                     - else
--#                       = post.body.truncate(100)
--#                     = link_to 'Read more', post, class: 'btn btn-secondary'
--#           - else
--#             = render partial: 'components/post_card', locals: {post: post}
-
--#       - else
--#         Add some posts!
-
--# %br
--# %br
--# %br
--# %br
--# = link_to 'New Post', new_admin_post_path

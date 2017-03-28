@@ -1,8 +1,0 @@
-= link_to 'Back', photos_path
-
-
-.container
-  = cl_image_tag @photo.image.blurry, alt: @photo.name
-  = @photo.description
-
-  = link_to 'Edit', edit_photo_path(@photo)
